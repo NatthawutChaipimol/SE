@@ -1,0 +1,44 @@
+.bt1 {
+    color: #D8F4C6;
+    border:1px solid #D8F4C6!important;
+    border-radius:8px;
+    padding: 5px;
+    background: inherit;
+
+}
+.bt1:hover{
+    color: #4C8577;
+    border-color: #D8F4C6;
+    background-color: #D8F4C6;
+    padding: 5px;
+}
+
+.bt2{
+    color: #4C8577;
+    border:1px solid #4C8577!important;
+    border-radius:8px;
+    padding: 10px;
+    background: inherit;
+
+}
+.bt2:hover{
+    color: #D8F4C6;
+    border-color: #4C8577;
+    background-color: #4C8577;
+    padding: 10px;
+}
+
+.bt3{
+    color: #D10E52;
+    border:1px solid #D10E52!important;
+    border-radius:8px;
+    padding: 10px;
+    background: inherit;
+
+}
+.bt3:hover{
+    color: lightpink;
+    border-color: #D10E52;
+    background-color: #D10E52;
+    padding: 10px;
+}
