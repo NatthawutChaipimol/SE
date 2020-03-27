@@ -96,7 +96,7 @@
                 echo 'Failed';
             } 
         ?>
-            <form action="check.php?s=3" method="POST">
+            <form action="checkPro.php?id=1" method="POST">
             <table>
                 <tr>
                     <th>Delete</th>
@@ -130,7 +130,7 @@
                 }
                 ?>
             </table>
-                <button class="button bt2">เพิ่มข้อมูล</button>
+                <input type="button"  class="button bt2" value="เพิ่มข้อมูล" onclick="location.href='addPro.php'"></input>
                 <button class="button bt3">ลบข้อมูล</button>
             </form>
         <br>

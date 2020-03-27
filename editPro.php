@@ -150,8 +150,8 @@
 
                     <div class="image-area mt-4"><img id="imageResult"  src="<?php echo $row["pImg"] ?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
 
-                    <input type="submit" name="submit" value="บันทึก">
-                    <input type="submit" name="submit" value="ยกเลิก">
+                    <input type="submit" name="submit" value="ยืนยันการแก้ไข" required>
+                    <input type="button"  class="button bt3" value="ยกเลิก" onclick="location.href='listProduct.php'" required></input>
                 </span>
                 <script src="checkjavascript.js"></script>
             </form>
