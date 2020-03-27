@@ -7,24 +7,16 @@ $user = $_POST['user'];
 $pass = $_POST['pass'];
 $submit = $_POST['submit'];
 
-$fname = $_POST['fname'];
-$lname = $_POST['lname'];
-$tel = $_POST['tel'];
-$email = $_POST['email'];
+$pName = $_POST['pName'];
+$pPrice = (int)$_POST['pPrice'];
+$pAmount = (int)$_POST['pAmount'];
+$pStatus = (int)$_POST['pStatus'];
+$pImg = $_POST["pImg"];
 
-$food = $_POST['id_food'];
-// echo $submit;
-$con=new ConnectDB();
-if ($submit == 'เข้าสู่ระบบ'){
-    $con->ckuser($user, $pass);
-}
-else if ($submit == 'เข้าสู่ระบบร้าน'){
-    $con->ckstore($user, $pass);
-}
-else if($submit == 'ยืนยันการสมัคร'){
-    $status = "user";
+$con=new ConnectDBPro();
+if($submit == 'บันทึก'){
     echo "ok";
-    $con->insert($user,$pass,$fname, $lname, $status ,$email ,$tel);
+    $con->insert($pName , $pPrice, $pAmount, $pStatus, $pImg);
 }
 else if($submit == 'ยืนยันการเเก้ไข'){
     

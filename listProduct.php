@@ -8,7 +8,7 @@
 </head>
 <body>
 <nav class="navbar navbar-light" style="background-color: #4C8577;">
-    <a class="navbar-brand text-light" href="index.php" style="color: #D8F4C6">
+    <a class="navbar-brand text-light" href="" style="color: #D8F4C6">
         <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         L’ arbre Cafe
     </a>
@@ -38,31 +38,53 @@
         <title>L'arbre Cafe</title>
     </head>
     <body>
-        <div class="box">
-            <div id = "container">
-            <form name="form1" action="checkPro.php" method="POST" enctype="multipart/form-data" onsubmit="return check()">
-            <span>
-                <center><h1>เพิ่มข้อมูลสินค้า</h1></center>
-                <label class="LabelText" for="name">ชื่อสินค้า</label>
-                    <input type="text" id = "pName" name="pName" value="">
-
-                <label class="LabelText" >ราคาสินค้า</label>
-                    <input type="text" id = "pPrice" name="pPrice" value="">
-                    
-                <label class="LabelText" >จำนวนสินค้า</label>
-                    <input type="text" id = "pAmount" name="pAmount" value="">
-                
-                <label class="LabelText" >สถานะของสินค้า</label>
-                <label><input type="radio" name="pStatus" value="0">ขาย</label>
-                <label><input type="radio" name="pStatus" value="1">ไม่ขาย</label><br>
-
-                <input type="submit" name="submit" value="บันทึก">
-                <input type="submit" name="submit" value="ยกเลิก">
-            </span>
-            <script src="checkjavascript.js"></script>
-        </form>
-        </div>
-    </div>
+        <center>
+        <?php
+            require_once './ConnectDB.php';
+            $con = new ConnectDB();
+            if($con->connect()){
+                $sql = "SELECT * FROM `user`";
+                $result = mysqli_query($con->connect(),$sql);
+            }  else {
+                echo 'Failed'.  mysqli_errno();
+            } 
+        ?>
+            <form action="check.php?s=3" method="POST">
+            <table>
+                <tr>
+                    <th>Delete</th>
+                    <th>Update</th>
+                    <th>pId</th>
+                    <th>pName</th>
+                    <th>pPrice</th>
+                    <th>pAmount</th>
+                    <th>pStatus</th>
+                    <th>pImg</th>
+                </tr>
+                <?php
+                if($result->num_rows > 0){
+//                    echo $result->num_rows;
+                    while ($row = mysqli_fetch_array($result)) {
+                ?>
+                <tr>
+                    <td> <input type="checkbox" name="checkbox[]" value="<?php echo $row["pId"]; ?>"> </td>
+                    <td> <a href="update.php?s=1&pId=<?php echo $row["pId"] ?>">Update</a> </td>
+                    <td> <?php echo $row["pId"] ?> </td>
+                    <td> <?php echo $row["pName"] ?> </td>
+                    <td> <?php echo $row["pPrice"] ?> </td>
+                    <td> <?php echo $row["pAmount"] ?> </td>
+                    <td> <?php echo $row["pStatus"] ?> </td>
+                    <td> <?php echo $row["pImg"] ?> </td>
+                </tr>
+                <?php
+                    }
+                }
+                ?>
+            </table>
+                <button class="button">delete</button>
+            </form>
+        <br>
+    </center>
 
         <footer>
             

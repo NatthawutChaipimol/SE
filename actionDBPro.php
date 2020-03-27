@@ -1,6 +1,6 @@
 <?php
 
-class ConnectDB
+class ConnectDBPro
 {
     public function connect()
     {
@@ -17,11 +17,12 @@ class ConnectDB
     {
         session_start();
         $sql =  "INSERT INTO `product`(`pName`, `pPrice`, `pAmount`, `pStatus`, `pImg`) 
-        VALUES ('".$pName."','".$pPrice."','".$pAmount."','".$pStatus."' ,'".$pImg."'";
+        VALUES ('".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."')";
 
         if (mysqli_query($this->connect(), $sql)) {
             echo "Can Insert !!!";
         } else echo "Cannot Insert";
+        echo "'".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."'";
     }
 
     public function update($fname, $lname, $sex, $stuatus, $user, $pass)
