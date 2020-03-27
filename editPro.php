@@ -117,11 +117,11 @@
                         <input type="text" id = "pAmount" name="pAmount" value="<?php  echo $row["pAmount"]?>" required>
                     
                     <label class="LabelText" >ประเภทของสินค้า</label>
-                    <?php if($row["pType"] == "food"){ ?>
+                    <?php if($row["pType"] == "0"){ ?>
                         <input type="radio" name="pStatus" value="food" checked="checked" required><label>อาหาร</label><br>
                         <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
                         <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
-                    <?php }else if($row["pType"] == "drink" ){ ?>
+                    <?php }else if($row["1"] == "drink" ){ ?>
                         <input type="radio" name="pStatus" value="food"  required><label>อาหาร</label><br>
                         <input type="radio" name="pStatus" value="drink" checked="checked" required><label>เครื่องดื่ม</label> <br>
                         <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
