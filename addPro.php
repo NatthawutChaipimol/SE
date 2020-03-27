@@ -100,9 +100,9 @@
                     <input type="text" id = "pAmount" name="pAmount" value="" required>
 
                 <label class="LabelText" >ประเภทของสินค้า</label>
-                <input type="radio" name="pType" value="0" required><label>อาหาร</label><br>
-                <input type="radio" name="pType" value="1" required><label>เครื่องดื่ม</label> <br>
-                <input type="radio" name="pType" value="2" required><label>ขนม</label> <br>
+                <input type="radio" name="pType" value="อาหาร" required><label>อาหาร</label><br>
+                <input type="radio" name="pType" value="เครื่องดื่ม" required><label>เครื่องดื่ม</label> <br>
+                <input type="radio" name="pType" value="ขนม" required><label>ขนม</label> <br>
                 
                 <label class="LabelText" >สถานะของสินค้า</label>
                 <input type="radio" name="pStatus" value="0" required><label>ขาย</label><br>

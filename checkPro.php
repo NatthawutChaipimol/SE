@@ -11,6 +11,7 @@ $pId = $_REQUEST["id"];
 $pName = $_POST['pName'];
 $pPrice = (int)$_POST['pPrice'];
 $pAmount = (int)$_POST['pAmount'];
+$pType = $_POST["pType"];
 $pStatus = (int)$_POST['pStatus'];
 $pImg = $_FILES["pImg"]["name"];
 
@@ -18,11 +19,11 @@ $pImg = $_FILES["pImg"]["name"];
 $con=new ConnectDBPro();
 if($submit == 'บันทึก'){
     echo "ok";
-    $con->insert($pName , $pPrice, $pAmount, $pStatus, $pImg);
+    $con->insert($pName , $pPrice, $pAmount,$pType, $pStatus, $pImg);
 }
 else if($submit == 'ยืนยันการแก้ไข'){
     echo "ok";
-    $con->update($pId,$pName , $pPrice, $pAmount, $pStatus, $pImg);
+    $con->update($pId,$pName , $pPrice, $pAmount,$pType, $pStatus, $pImg);
 }
 else if($pId == "1" ){
 
