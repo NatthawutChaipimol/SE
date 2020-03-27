@@ -117,18 +117,18 @@
                         <input type="text" id = "pAmount" name="pAmount" value="<?php  echo $row["pAmount"]?>" required>
                     
                     <label class="LabelText" >ประเภทของสินค้า</label>
-                    <?php if($row["pType"] == "0"){ ?>
-                        <input type="radio" name="pStatus" value="food" checked="checked" required><label>อาหาร</label><br>
-                        <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
-                        <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
-                    <?php }else if($row["1"] == "drink" ){ ?>
-                        <input type="radio" name="pStatus" value="food"  required><label>อาหาร</label><br>
-                        <input type="radio" name="pStatus" value="drink" checked="checked" required><label>เครื่องดื่ม</label> <br>
-                        <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
+                    <?php if($row["pType"] == 0 ){ ?>
+                        <input type="radio" name="pType" value="0" checked="checked" required><label>อาหาร</label><br>
+                        <input type="radio" name="pType" value="1" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pType" value="2" required><label>ขนม</label> <br>
+                    <?php }else if($row["1"] == 1 ){ ?>
+                        <input type="radio" name="pType" value="0" required><label>อาหาร</label><br>
+                        <input type="radio" name="pType" value="1" checked="checked" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pType" value="2" required><label>ขนม</label> <br>
                     <?php }else{ ?>
-                        <input type="radio" name="pStatus" value="food"  required><label>อาหาร</label><br>
-                        <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
-                        <input type="radio" name="pStatus" value="snack" checked="checked" required><label>ขนม</label> <br>
+                        <input type="radio" name="pType" value="0" required><label>อาหาร</label><br>
+                        <input type="radio" name="pType" value="1" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pType" value="2" checked="checked" required><label>ขนม</label> <br>
                     <?php } ?>
 
                     <label class="LabelText" >สถานะของสินค้า</label>
