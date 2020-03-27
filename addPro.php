@@ -91,21 +91,26 @@
             <span>
                 <center><h1>เพิ่มข้อมูลสินค้า</h1></center>
                 <label class="LabelText" for="name">ชื่อสินค้า</label>
-                    <input type="text" id = "pName" name="pName" value="">
+                    <input type="text" id = "pName" name="pName" value="" required>
 
                 <label class="LabelText" >ราคาสินค้า</label>
-                    <input type="text" id = "pPrice" name="pPrice" value="">
+                    <input type="text" id = "pPrice" name="pPrice" value="" required>
                     
                 <label class="LabelText" >จำนวนสินค้า</label>
-                    <input type="text" id = "pAmount" name="pAmount" value="">
+                    <input type="text" id = "pAmount" name="pAmount" value="" required>
+
+                <label class="LabelText" >ประเภทของสินค้า</label>
+                <input type="radio" name="pStatus" value="food" required><label>อาหาร</label><br>
+                <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
+                <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
                 
                 <label class="LabelText" >สถานะของสินค้า</label>
-                <input type="radio" name="pStatus" value="0"><label>ขาย</label><br>
-                <input type="radio" name="pStatus" value="1"><label>ไม่ขาย</label> <br>
+                <input type="radio" name="pStatus" value="0" required><label>ขาย</label><br>
+                <input type="radio" name="pStatus" value="1" required><label>ไม่ขาย</label> <br>
 
                 <label class="LabelText" >เลือกรูปของสินค้า</label>
                 <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                    <input id="upload" type="file" name="pImg" value="" onchange="readURL(this);" class="form-control border-0" >
+                    <input id="upload" type="file" name="pImg" value="" onchange="readURL(this);" class="form-control border-0" required>
                     <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                     <div class="input-group-append">
                         <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
@@ -114,8 +119,8 @@
 
                 <div class="image-area mt-4"><img id="imageResult"  src="" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
 
-                <input type="submit" name="submit" value="บันทึก">
-                <input type="submit" name="submit" value="ยกเลิก">
+                <input type="submit" name="submit" value="บันทึก" required>
+                <input type="submit" name="submit" value="ยกเลิก" required>
             </span>
             <script src="checkjavascript.js"></script>
         </form>

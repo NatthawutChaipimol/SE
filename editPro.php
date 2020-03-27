@@ -40,6 +40,53 @@
     <link rel="stylesheet" href="bt.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <title>L'arbre Cafe</title>
+    <style>
+        #Time {
+            border: 1px solid #ccc;
+            color: #888;
+            margin: 0.5em;
+            vertical-align: middle;
+            outline: 0;
+            padding: 0.5em 1em;
+            border-radius: 4px;
+            width: calc(100% - 3em - 2px);
+            font-family: sans-serif;
+        }
+        #upload {
+            opacity: 0;
+        }
+
+        #upload-label {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .image-area {
+            border: 2px dashed rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .image-area::before {
+            content: 'Uploaded image result';
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        .image-area img {
+            z-index: 2;
+            position: relative;
+        }
+        </style>
 </head>
 
 <body>
@@ -59,30 +106,82 @@
         <div id="container">
             <form name="form" action="checkPro.php?id=<?php echo $id ?>" method="POST" enctype="multipart/form-data" >
                 <span>
-                    <center>
-                        <h1>แก้ไขข้อมูลสินค้า</h1>
-                    </center>
+                    <center><h1>แก้ไขข้อมูลสินค้า</h1></center>
                     <label class="LabelText" for="name">ชื่อสินค้า</label>
-                    <input type="text" id="pName" name="pName" value=<?php  echo $row["pName"]?>>
+                        <input type="text" id = "pName" name="pName" value="<?php  echo $row["pName"]?>" required>
 
-                    <label class="LabelText">ราคาสินค้า</label>
-                    <input type="text" id="pPrice" name="pPrice" value=<?php  echo $row["pPrice"]?>>
+                    <label class="LabelText" >ราคาสินค้า</label>
+                        <input type="text" id = "pPrice" name="pPrice" value="<?php  echo $row["pPrice"]?>" required>
+                        
+                    <label class="LabelText" >จำนวนสินค้า</label>
+                        <input type="text" id = "pAmount" name="pAmount" value="<?php  echo $row["pAmount"]?>" required>
+                    
+                    <label class="LabelText" >ประเภทของสินค้า</label>
+                    <?php if($row["pType"] == "food"){ ?>
+                        <input type="radio" name="pStatus" value="food" checked="checked" required><label>อาหาร</label><br>
+                        <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
+                    <?php }else if($row["pType"] == "drink" ){ ?>
+                        <input type="radio" name="pStatus" value="food"  required><label>อาหาร</label><br>
+                        <input type="radio" name="pStatus" value="drink" checked="checked" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pStatus" value="snack" required><label>ขนม</label> <br>
+                    <?php }else{ ?>
+                        <input type="radio" name="pStatus" value="food"  required><label>อาหาร</label><br>
+                        <input type="radio" name="pStatus" value="drink" required><label>เครื่องดื่ม</label> <br>
+                        <input type="radio" name="pStatus" value="snack" checked="checked" required><label>ขนม</label> <br>
+                    <?php } ?>
 
-                    <label class="LabelText">จำนวนสินค้า</label>
-                    <input type="text" id="pAmount" name="pAmount" value=<?php  echo $row["pAmount"]?>>
+                    <label class="LabelText" >สถานะของสินค้า</label>
+                    <?php if($row["pStatus"] == 0){ ?>
+                        <input type="radio" name="pStatus" value="0" checked="checked" required><label>ขาย</label><br>
+                        <input type="radio" name="pStatus" value="1" required><label>ไม่ขาย</label> <br>
+                    <?php }else{ ?>
+                        <input type="radio" name="pStatus" value="0" required><label>ขาย</label><br>
+                        <input type="radio" name="pStatus" value="1" checked="checked" required><label>ไม่ขาย</label> <br>
+                    <?php } ?>
+                    <label class="LabelText" >เลือกรูปของสินค้า</label>
+                    <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                        <input id="upload" type="file" name="pImg" value="" onchange="readURL(this);" class="form-control border-0" required>
+                        <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
+                        <div class="input-group-append">
+                            <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                        </div>
+                    </div>
 
-                    <label class="LabelText">สถานะของสินค้า</label>
-                    <label><input type="radio" name="pStatus" value=<?php  echo $row["pStatus"]?>>ขาย</label>
-                    <label><input type="radio" name="pStatus" value=<?php  echo $row["pStatus"]?>>ไม่ขาย</label><br>
+                    <div class="image-area mt-4"><img id="imageResult"  src="<?php echo $row["pImg"] ?>" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
 
-                    <input type="submit" name="submit" value="ยืนยันการแก้ไข">
+                    <input type="submit" name="submit" value="บันทึก">
                     <input type="submit" name="submit" value="ยกเลิก">
                 </span>
                 <script src="checkjavascript.js"></script>
             </form>
         </div>
     </div>
-
+    <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(function () {
+        $('#upload').on('change', function () {
+            readURL(input);
+        });
+    });
+    var input = document.getElementById( 'upload' );
+    var infoArea = document.getElementById( 'upload-label' );
+    input.addEventListener( 'change', showFileName );
+    function showFileName( event ) {
+        var input = event.srcElement;
+        var fileName = input.files[0].name;
+        infoArea.textContent = 'File name: ' + fileName;
+    }
+</script>
     <footer>
 
     </footer>
