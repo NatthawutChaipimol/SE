@@ -4,8 +4,12 @@ class ConnectDBPro
 {
     public function connect()
     {
+        $dbhost = "26.216.63.243";
+        $dbuser = "se";
         $dbpassword = "";
         $db = "db_se";
+        $port = 3306;
+        $conn = new mysqli($dbhost ,$port , $dbuser, $dbpassword, $db) or
             die("Connect failed %s\n" . $conn->erro);
         mysqli_set_charset($conn, "utf8");
         return $conn;
