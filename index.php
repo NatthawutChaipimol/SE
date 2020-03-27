@@ -19,7 +19,7 @@
                 <h5 class="mt-4">หมวดกาแฟ</h5>
                 <hr>
                 <div class="card-group">
-                    <div class="card mr-2" style="">
+                    <div class="card mr-2" style"">
                         <img src="img/cafe-mocha.jpg" class="card-img-top" alt="..." style="height: 60%">
                         <div class="card-body">
                             <?php $star=3;
