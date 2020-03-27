@@ -40,10 +40,9 @@ class ConnectDBPro
 
     public function delete($del)
     {
-        $sql = "Delete from db_user where iduser=" . $del;
-        echo $sql;
+        $sql = "DELETE FROM `product` WHERE pId=".$del."";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:admin.php");
+            header("Location:listProduct.php");
         } else echo "Cannot update";
     }
     

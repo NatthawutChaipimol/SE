@@ -14,6 +14,7 @@ $pAmount = (int)$_POST['pAmount'];
 $pStatus = (int)$_POST['pStatus'];
 $pImg = $_FILES["pImg"]["name"];
 
+
 $con=new ConnectDBPro();
 if($submit == 'บันทึก'){
     echo "ok";
@@ -23,13 +24,18 @@ else if($submit == 'ยืนยันการแก้ไข'){
     echo "ok";
     $con->update($pId,$pName , $pPrice, $pAmount, $pStatus, $pImg);
 }
-else if($d == 2 ){
-    $id=$_REQUEST['ID'];
+else if($pId == "1" ){
+
     $sql = "DELETE FROM `product` WHERE `pId`=".$id."";
     
-    if(mysqli_query($con->connect(), $sql)){
-        header("Location:listProduct.php");
-    }else echo "Cannot ";
+    for($i=0;$i<count($_POST["checkbox"]);$i++)
+	{
+		if($_POST["checkbox"][$i] != "")
+		{
+            echo "Ok ".$_POST["checkbox"][$i]." ";
+            $con->delete($_POST["checkbox"][$i]);
+		}
+	}
 }else{
     echo "Not all";
 }
