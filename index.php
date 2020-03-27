@@ -11,6 +11,9 @@
 <body>
     <?php
         include 'header.php';
+        require_once 'DBindex.php';
+        $con = new ConnectDBPro();
+        $result = $con->getAllProduct();
     ?>
     <div class="container pt-5">
         <div class="row">
@@ -18,11 +21,15 @@
                 <h3>รายการอาหาร</h3>
                 <h5 class="mt-4">หมวดกาแฟ</h5>
                 <hr>
-                <div class="card-group">
-                    <div class="card mr-2" style>
-                        <img src="img/cafe-mocha.jpg" class="card-img-top" alt="..." style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=3;
+                <div class="row">
+                    <?php while($row = $result->fetch_assoc()) {?>
+                    <div class="col-4">
+                        <div class="card">
+                            <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." >
+                            <div class="card-body">
+                                <?php
+
+                                $star=$con->getScoreOFProduct($row['pId']);
                                 for ($i = 1; $i <= 5; $i++) {
                                     if ($star >= 1) {
                                         echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
@@ -33,129 +40,16 @@
                                     }
                                     $star--;
                                 }
-                            ?>
-                            <h5 class="card-title">Espesso </h5>
-                            <a>100B.</a>
-                            <p class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </p>
-
+                                ?>
+                                <h5 class="card-title"><?php echo $row['pName'] ?> </h5>
+                                <a><?php echo $row['pPrice'] ?></a>
+                                <p class="float-right" type="submit" href="">
+                                    <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    <div class="card mr-2">
-                        <img src="img/coffee.jpg" class="card-img-top" alt="..." style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=5;
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($star >= 1) {
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                } else if($star >= 0.5){
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                }else {
-                                    echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                                $star--;
-                            }
-                            ?>
-                            <h5 class="card-title">Cafe latte</h5>
-                            110B.
-                            <a class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card mr-2">
-                        <img src="img/760865-img-1397794410-4.jpg" class="card-img-top" alt="..." style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=3;
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($star >= 1) {
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                } else if($star >= 0.5){
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                }else {
-                                    echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                                $star--;
-                            }
-                            ?>
-                            <h5 class="card-title">Cafe mocha  </h5>
-                            110B.
-                            <a class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <h5 class="mt-4">หมวดขนมปัง</h5>
-                <hr>
-                <div class="card-group">
-                    <div class="card mr-2">
-                        <img src="img/e7bc9b3dace46d92bc47ca05cc97ec81.jpg" class="card-img-top" alt="..."style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=2;
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($star >= 1) {
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                } else if($star >= 0.5){
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                }else {
-                                    echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                                $star--;
-                            }
-                            ?>
-                            <h5 class="card-title">Miche  </h5>
-                            100B.
-                            <a class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card mr-2">
-                        <img src="img/ps2h6nwivQlSzAl20MX-o.jpg" class="card-img-top" alt="..."style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=4;
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($star >= 1) {
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                } else if($star >= 0.5){
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                }else {
-                                    echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                                $star--;
-                            }
-                            ?>
-                            <h5 class="card-title">Pain tessinois </h5>
-                            50B.
-                            <a class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card mr-2">
-                        <img src="img/uploded_istock-508489708-1557829184.jpg" class="card-img-top" alt="..."style="height: 60%">
-                        <div class="card-body">
-                            <?php $star=3.5;
-                            for ($i = 1; $i <= 5; $i++) {
-                                if ($star >= 1) {
-                                    echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
-                                } else if($star >= 0.5){
-                                    echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
-                                }else {
-                                    echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
-                                }
-                                $star--;
-                            }
-                            ?>
-                            <h5 class="card-title">Pain au seigle  </h5>
-                            100B.
-                            <a class="float-right" type="submit" href="">
-                                <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-1"></div>
@@ -173,11 +67,6 @@
                             <td>Cafe mocha</td>
                             <td>1</td>
                             <td>100B.</td>
-                        </tr>
-                        <tr>
-                            <td>Pain an seigle</td>
-                            <td>2</td>
-                            <td>200B.</td>
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: center; border-top: 0px">ราคารวม</td>
