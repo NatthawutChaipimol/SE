@@ -44,4 +44,5 @@ class ConnectDBPro
             header("Location:admin.php");
         } else echo "Cannot update";
     }
+    
 }
