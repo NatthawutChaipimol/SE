@@ -36,6 +36,53 @@
         <link rel="stylesheet" href="bt.css" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
         <title>L'arbre Cafe</title>
+        <style>
+        #Time {
+            border: 1px solid #ccc;
+            color: #888;
+            margin: 0.5em;
+            vertical-align: middle;
+            outline: 0;
+            padding: 0.5em 1em;
+            border-radius: 4px;
+            width: calc(100% - 3em - 2px);
+            font-family: sans-serif;
+        }
+        #upload {
+            opacity: 0;
+        }
+
+        #upload-label {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+        }
+
+        .image-area {
+            border: 2px dashed rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            position: relative;
+        }
+
+        .image-area::before {
+            content: 'Uploaded image result';
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+
+        .image-area img {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
     </head>
     <body>
         <center>
@@ -85,7 +132,31 @@
             </form>
         <br>
     </center>
-
+    <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imageResult')
+                    .attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(function () {
+        $('#upload').on('change', function () {
+            readURL(input);
+        });
+    });
+    var input = document.getElementById( 'upload' );
+    var infoArea = document.getElementById( 'upload-label' );
+    input.addEventListener( 'change', showFileName );
+    function showFileName( event ) {
+        var input = event.srcElement;
+        var fileName = input.files[0].name;
+        infoArea.textContent = 'File name: ' + fileName;
+    }
+</script>
         <footer>
             
         </footer>
