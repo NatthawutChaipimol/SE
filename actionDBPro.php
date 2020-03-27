@@ -44,7 +44,4 @@ class ConnectDBPro
             header("Location:admin.php");
         } else echo "Cannot update";
     }
-    public function login($username, $password){
-        $sql = "SELECT * FROM `customer` WHERE cUsername"
-    }
 }
