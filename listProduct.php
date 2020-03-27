@@ -40,13 +40,13 @@
     <body>
         <center>
         <?php
-            require_once './ConnectDB.php';
-            $con = new ConnectDB();
+            require_once './actionDBPro.php';
+            $con = new ConnectDBPro();
             if($con->connect()){
-                $sql = "SELECT * FROM `user`";
+                $sql = "SELECT * FROM `product`";
                 $result = mysqli_query($con->connect(),$sql);
             }  else {
-                echo 'Failed'.  mysqli_errno();
+                echo 'Failed';
             } 
         ?>
             <form action="check.php?s=3" method="POST">
@@ -68,7 +68,7 @@
                 ?>
                 <tr>
                     <td> <input type="checkbox" name="checkbox[]" value="<?php echo $row["pId"]; ?>"> </td>
-                    <td> <a href="update.php?s=1&pId=<?php echo $row["pId"] ?>">Update</a> </td>
+                    <td> <a href="editPro.php?s=1&pId=<?php echo $row["pId"] ?>">Update</a> </td>
                     <td> <?php echo $row["pId"] ?> </td>
                     <td> <?php echo $row["pName"] ?> </td>
                     <td> <?php echo $row["pPrice"] ?> </td>

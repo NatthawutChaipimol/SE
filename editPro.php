@@ -40,21 +40,21 @@
     <body>
         <div class="box">
             <div id = "container">
-            <form name="form1" action="check.php?s=2" method="POST" enctype="multipart/form-data" onsubmit="return check()">
+            <form name="form1" action="checkPro.php" method="POST" enctype="multipart/form-data" onsubmit="return check()">
             <span>
-                <center><h1>เพิ่มข้อมูลสินค้า</h1></center>
+                <center><h1>แก้ไขข้อมูลสินค้า</h1></center>
                 <label class="LabelText" for="name">ชื่อสินค้า</label>
-                    <input type="text" id = "fname" name="name" value="">
+                    <input type="text" id = "pName" name="pName" value="">
 
-                <label class="LabelText" for="username">ราคาสินค้า</label>
-                    <input type="text" id = "username" name="price" value="">
+                <label class="LabelText" >ราคาสินค้า</label>
+                    <input type="text" id = "pPrice" name="pPrice" value="">
                     
-                <label class="LabelText" for="password">จำนวนสินค้า</label>
-                    <input type="text" id = "password" name="amount" value="">
+                <label class="LabelText" >จำนวนสินค้า</label>
+                    <input type="text" id = "pAmount" name="pAmount" value="">
                 
-                <label class="LabelText" for="status">สถานะของสินค้า</label>
-                <label><input type="radio" name="status" value="on">ขาย</label>
-                <label><input type="radio" name="status" value="out">ไม่ขาย</label><br>
+                <label class="LabelText" >สถานะของสินค้า</label>
+                <label><input type="radio" name="pStatus" value="0">ขาย</label>
+                <label><input type="radio" name="pStatus" value="1">ไม่ขาย</label><br>
 
                 <input type="submit" name="submit" value="บันทึก">
                 <input type="submit" name="submit" value="ยกเลิก">
