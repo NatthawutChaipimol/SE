@@ -1,57 +1,58 @@
-
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     width: 100%;
-    background: url("coffee4.jpg") no-repeat;
     height: 100%;
     background-size: cover;
-
 }
 
-table { 
+table {
     border-collapse: separate;
     border: 1px solid black;
     width: 100%;
     background-color: #555555;
 }
-th, td {
+
+th,
+td {
     color: black;
-    text-align: left; 
+    text-align: left;
     padding: 10px;
     background-color: whitesmoke;
 }
-           
-th { 
+
+th {
     background-color: purple;
     color: white;
-    text-align: center; 
+    text-align: center;
 }
 
-#container{
+#container {
     margin-left: 100px;
     margin-right: 100px;
     margin-top: 50px;
     padding-bottom: 5%;
 }
 
-input[type=text], select {
-    width: 100%;    
-    padding: 12px 20px;   
+input[type=text],
+select {
+    width: 100%;
+    padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;    
-    border: 1px solid #ccc; 
+    display: inline-block;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-input[type=password], select {
-    width: 100%;    
-    padding: 12px 20px;   
+input[type=password],
+select {
+    width: 100%;
+    padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;    
-    border: 1px solid #ccc; 
+    display: inline-block;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -61,57 +62,58 @@ input[type=radio] {
     padding: 500px 200px;
     display: inline-block;
 }
-           
+
 input[type=submit] {
     color: #4C8577;
-    border:1px solid #4C8577!important;
-    border-radius:8px;
+    border: 1px solid #4C8577!important;
+    border-radius: 8px;
     padding: 10px;
     background: inherit;
 }
-            
+
 input[type=submit]:hover {
     background-color: #15a049;
 }
-            
-input[type=submit].butt2{
-    background-color: white; 
-    color: black; 
+
+input[type=submit].butt2 {
+    background-color: white;
+    color: black;
     border: 2px solid #008CBA;
 }
-            
+
 input[type=submit].butt2:hover {
     background-color: #008CBA;
     color: white;
 }
-            
-.LabelText{
+
+.LabelText {
     display: block;
-    color:blue;
+    color: blue;
 }
-            
-.box{
-    border:2px groove gray;
+
+.box {
+    border: 2px groove gray;
     margin-left: 20%;
     margin-right: 20%;
     margin-top: 5%;
     background: whitesmoke;
 }
 
-.box2{
-    border:2px groove gray;
+.box2 {
+    border: 2px groove gray;
     margin-left: 35%;
     margin-right: 35%;
     margin-top: 10%;
     background: whitesmoke;
 }
-            
-a:hover{
-    color:green;
+
+a:hover {
+    color: green;
 }
-           
+
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
+    /* Green */
     border: none;
     color: white;
     padding: 15px 32px;

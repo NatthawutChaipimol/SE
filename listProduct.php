@@ -81,7 +81,8 @@
                 }
                 ?>
             </table>
-                <button class="button">delete</button>
+                <button class="button bt2">เพิ่มข้อมูล</button>
+                <button class="button bt3">ลบข้อมูล</button>
             </form>
         <br>
     </center>
