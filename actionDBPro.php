@@ -4,13 +4,15 @@ class ConnectDBPro
 {
     public function connect()
     {
-        $dbhost = "localhost";
-        $dbuser = "root";
+        $dbhost = "26.216.63.243";
+        $dbuser = "se2";
         $dbpassword = "";
-        $db = "db_se";
-        $conn = new mysqli($dbhost, $dbuser, $dbpassword, $db) or
-            die("Connect failed %s\n" . $conn->erro);
-        mysqli_set_charset($conn, "utf8");
+        $db = 'db_se';
+        $port=3306;
+        $conn = new mysqli($dbhost,$dbuser, $dbpassword, $db);
+         if ($conn->connect_error) {
+             die("Connection failed: " . $conn->connect_error);
+         }
         return $conn;
     }
     public function insert($pName , $pPrice, $pAmount, $pStatus, $pImg)
@@ -44,4 +46,5 @@ class ConnectDBPro
             header("Location:admin.php");
         } else echo "Cannot update";
     }
+    
 }
