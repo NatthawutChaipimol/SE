@@ -15,10 +15,10 @@ class ConnectDBPro
          }
         return $conn;
     }
-    public function insert($pName , $pPrice, $pAmount, $pStatus, $pImg)
+    public function insert($pName , $pPrice, $pAmount, $pType, $pStatus, $pImg)
     {
-        $sql =  "INSERT INTO `product`(`pName`, `pPrice`, `pAmount`, `pStatus`, `pImg`) 
-        VALUES ('".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."')";
+        $sql =  "INSERT INTO `product`(`pName`, `pPrice`, `pAmount`, `pType`, `pStatus`, `pImg`) 
+        VALUES ('".$pName."','.$pPrice.','.$pAmount.','".$pType."','.$pStatus.' ,'".$pImg."')";
 
         if (mysqli_query($this->connect(), $sql)) {
             echo "Can Insert !!!";
@@ -27,10 +27,10 @@ class ConnectDBPro
         echo "'".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."'";
     }
 
-    public function update($pId, $pName , $pPrice, $pAmount, $pStatus, $pImg)
+    public function update($pId, $pName , $pPrice, $pAmount, $pType, $pStatus, $pImg)
     {
         $sql =  "UPDATE `product` SET `pName`='".$pName."',`pPrice`='.$pPrice.',`pAmount`='.$pAmount.'
-        ,`pStatus`='.$pStatus.',`pImg`='".$pImg."' WHERE  `pId`=$pId";
+        ,`pType`='".$pType."',`pStatus`='.$pStatus.',`pImg`='".$pImg."' WHERE  `pId`=$pId";
         if (mysqli_query($this->connect(), $sql)) {
             header("Location:listProduct.php");
             echo "Can Update !!!";

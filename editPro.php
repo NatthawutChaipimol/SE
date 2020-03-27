@@ -76,7 +76,7 @@
                     <label><input type="radio" name="pStatus" value=<?php  echo $row["pStatus"]?>>ไม่ขาย</label><br>
 
                     <input type="submit" name="submit" value="ยืนยันการแก้ไข">
-                    <input type="submit" name="submit" value="ยกเลิก">
+                    <input type="button"  class="button bt3" value="ยกเลิก" onclick="location.href='listProduct.php'"></input>
                 </span>
                 <script src="checkjavascript.js"></script>
             </form>
