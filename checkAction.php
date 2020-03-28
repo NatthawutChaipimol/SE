@@ -24,3 +24,13 @@ if($c==1){
     $total = $_REQUEST["total"];
     $bid = $conn->insertBill($total,$_SESSION["cid"],$_SESSION["listProduct"]);
 }
+elseif($c==5){
+    $pid = $_REQUEST["pid"];
+    $_SESSION["listProduct"][$pid] -= 1;
+    header("Location:index.php");
+}
+elseif($c==6){
+    $pid = $_REQUEST["pid"];
+    $_SESSION["listProduct"][$pid] += 1;
+    header("Location:index.php");
+}

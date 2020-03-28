@@ -25,8 +25,8 @@
                 <div class="row">
                     <?php while($row = $result->fetch_assoc()) {?>
                     <div class="col-4">
-                        <div class="card">
-                            <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." >
+                        <div class="card" >
+                            <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." onclick="location.href = 'showReview.php'" >
                             <div class="card-body">
                                 <?php
                                 $star=$con->getScoreOFProduct($row['pId']);
@@ -75,31 +75,37 @@
                         ?>
                         <tr>
                             <td><?php echo $row["pName"]; ?></td>
-                            <td><?php echo $value; ?></td>
+                            <td> <a href="checkAction.php?c=5&pid=<?php echo $row['pId'] ;?>"><i class="fas fa-minus-circle" style="font-size: 20px;color: gold"></i> </a><?php echo $value; ?><a href="checkAction.php?c=6&pid=<?php echo $row['pId'] ;?>"> <i class="fas fa-plus-circle" style="font-size: 20px;color: gold"></i></a></td>
                             <td><?php echo $row["pPrice"]*$value; ?>B.</td>
                         </tr>
                         <?php } ?>
                         <tr>
-                            <td colspan="2" style="text-align: center; border-top: 0px">ราคารวม</td>
-                            <td style="border-top: 0px"><?php echo $sumall ?>B.</td>
+                            <td colspan="2" style="text-align: center; border-top: 0px; padding: 0">ราคารวม</td>
+                            <td style="border-top: 0px; padding-top: 0;padding-bottom: 0"><?php echo $sumall ?>B.</td>
                         </tr>
                         <tr>
-                            <td colspan="2" style="text-align: center; border-top: 0px">ค่าจัดส่ง</td>
-                            <td style="border-top: 0px">20B.</td>
+                            <td colspan="2" style="text-align: center; border-top: 0px; padding: 0">ค่าจัดส่ง</td>
+                            <td style="border-top: 0px; padding-top: 0;padding-bottom: 0">20B.</td>
                         </tr>
                         <?php $sumall+=20; ?>
                         <tr>
-                            <td colspan="2" style="text-align: center; border-top: 0px">ราคารวมสุทธิ</td>
-                            <td style="border-top: 0px"><?php echo $sumall ?>B.</td>
+                            <td colspan="2" style="text-align: center; border-top: 0px; padding: 0">ราคารวมสุทธิ</td>
+                            <td style="border-top: 0px; padding-top: 0;padding-bottom: 0"><?php echo $sumall ?>B.</td>
                         </tr>
                         </tbody>
                     </table>
-                    <form action="checkAction.php?c=3" method='POST'>
-                    <button type="submit" class="btn btn-outline-danger">ล้างสินค้า</button>
-                    </form>
-                    <form action="checkAction.php?c=4&total=<?php echo $sumall; ?>" method='POST'>
-                    <button type="submit" class="btn btn-outline-success" style="float: right">สั่งสินค้า</button>
-                    </form>
+                <table class="table">
+                    <tr>
+                        <td style="text-align: center; border-top: 0px"><form action="checkAction.php?c=3" method='POST'>
+                                <button type="submit" class="btn btn-outline-danger">ล้างสินค้า</button>
+                            </form>
+                        </td>
+                        <td style="border-top: 0px"></td>
+                        <td style="border-top: 0px"><form action="checkAction.php?c=4&total=<?php echo $sumall; ?>" method='POST'style="float: right">
+                                <button type="submit" class="btn btn-outline-success" >สั่งสินค้า</button>
+                            </form></td>
+                    </tr>
+                </table>
                 </div>
             </div>
         </div>
@@ -107,5 +113,10 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        function ALerttest() {
+            alert("TST5555");
+        }
+    </script>
 </body>
 </html>
