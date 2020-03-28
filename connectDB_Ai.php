@@ -14,6 +14,7 @@ class connectDB_Ai
         }
         return $conn;
     }
+
     public function getCustomer($cId){
         $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cId."'";
         return $this->connect()->query($sql);

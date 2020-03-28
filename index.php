@@ -92,7 +92,6 @@
                             <td colspan="2" style="text-align: center; border-top: 0px">ราคารวมสุทธิ</td>
                             <td style="border-top: 0px"><?php echo $sumall ?>B.</td>
                         </tr>
-
                         </tbody>
                     </table>
                     <form action="checkAction.php?c=3" method='POST'>

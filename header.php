@@ -26,7 +26,6 @@ if($uname != "") {
     $uname = $val["cName"];
     $bt = "ออกจากระบบ";
     $link = "checkAction.php?c=2";
-
 }
 ?>
 <nav class="navbar navbar-light" style="background-color: #4C8577;">

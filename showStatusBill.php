@@ -14,6 +14,7 @@ $bill = $conn->getBill($bid);
 $val = $bill->fetch_assoc();
 $orders = $conn->getOrder($bid);
 $text = "";
+
 if($val["bDeliveryStatus"] == "รอการชำระ") $text = "กรุณาชำระเงินก่อนค่ะ";
 else if($val["bDeliveryStatus"] == "ตรวจสอบการชำระเงิน") $text = "กรุณารอสักครู่กำลังตรวจสอบการชำระเงินของคุณอยู่";
 else if($val["bDeliveryStatus"] == "กำลังเตรียมอาหาร") $text = "กรุณารอสักครู่กำลังเตรียมอาหารให้คุณ";
