@@ -32,7 +32,7 @@ $row = $customer->fetch_assoc();
             <input type="text" id='tel' placeholder="Phone number" name='tel' value="<?php echo $row["cTel"]; ?>"/>
             <textarea placeholder="Address" name='address' id='address'  style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"><?php echo $row["cAddress"]; ?></textarea>
             <!--                <input type="text" id='address' placeholder="Address" name='address' aria-multiline="true" height="100"/>-->
-            <button style="background-color: #4C8577" onclick=" return check()">สมัครสมาชิก</button>
+            <button style="background-color: #4C8577" onclick=" return check()">UPDATE</button>
         </form>
 
 
