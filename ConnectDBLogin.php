@@ -27,7 +27,6 @@ class ConnectDB
             header("Location:login.php?cl=1");
         }
 
-
     }
     
     
