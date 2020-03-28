@@ -2,6 +2,8 @@
 require_once 'customerDB.php';
 error_reporting(E_ALL^E_NOTICE);
 
+include 'header.php';
+
 $id = $_SESSION['cid'];
 $ss = $_REQUEST["ss"];
 $con=new ConnectDBCustomr();
@@ -40,7 +42,7 @@ else if($ss == 2){
     $em = $con->getCustomer($_SESSION['cid']);
     $valEm = $em->fetch_assoc();
     $result = mysqli_query($con->connect(),$sql);
-    echo $id;
+    echo $_SESSION['cid'];
     echo $user;
     echo $pass;
     echo $name;
