@@ -31,7 +31,9 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <h4><?php echo $text; ?></h4>
                     <?php if($val["bDeliveryStatus"] == "รอการชำระ") {?>
                     <a href="payment.php?bid=<?php echo $val["bId"]?>"><button type="button" class="bt2" style="width: 130px">แจ้งโอน</button></a>
-                    <button type="button" onclick="location.href='cancelOder.php?bid=<?php echo $bid?>' " class="bt3" style="width: 130px">ยกเลิกคำสั่งซื้อ</button>
+                        <form class="mt-2" action="cancelOder.php?bid=<?php echo $bid?>">
+                            <button type="submit" class="bt3" onclick="return confirm2()" style="width: 130px">ยกเลิกคำสั่งซื้อ</button>
+                        </form>
                     <?php }?>
                 </div>
             </div>
@@ -120,6 +122,13 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
     </div>
 </div>
 <script>
+    function confirm2() {
+        if ( confirm("คุณต้องการยกเลิกคำสั่งซื้อนี้หรือไม่!")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function clickStar(n,j) {
         document.getElementById(j+"star1").className = "far fa-star";
         document.getElementById(j+"star2").className = "far fa-star";
