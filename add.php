@@ -59,7 +59,7 @@ while($show = mysqli_fetch_array($result)){
     <div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
         <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
             <div style="margin: 20px;">
-                <form action="check.php?s=19" method="POST" enctype="multipart/form-data">
+                <form action="checkCustomer.php?ss=3" method="POST" enctype="multipart/form-data">
                     <table style="width: 100%;">
                         <tr>
                             <td rowspan="6" STYLE="width: 20%; text-align: center;">
@@ -111,17 +111,19 @@ while($show = mysqli_fetch_array($result)){
                         <tr>
                             <td colspan="3" style="text-align: center; padding-top: 10px;">
                                 <button type="submit" class="btn btn-outline-warning">Delete</button>
+                                <button class="btn btn-outline-warning"  ><a href="register.php?n=0">Insert</a></button>
+
 
                         </tr>
                     </table>
 
 
                 </form>
-                <button type="submit" class="btn btn-outline-warning" >Insert</button></td>
             </div>
         </div>
     </div>
 <?php } ?>
+
 <!--<div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">-->
 <!--    <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">-->
 <!--        <div style="margin: 20px;">-->
