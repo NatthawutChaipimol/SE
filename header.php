@@ -14,6 +14,9 @@ $conn = new connectDB_Ai();
 if(!isset($_SESSION["listProduct"])){
     $_SESSION["listProduct"] = array();
 }
+if(!isset($_SESSION["page"])){
+    $_SESSION["page"] = "null";
+}
 $bt = "เข้าสู่ระบบ";
 $link = "login.php";
 $link2 = "mainAdmin.php";
@@ -22,6 +25,7 @@ $_SESSION["cid"] = 1;
 if(!isset($_SESSION["cid"])){
     $_SESSION["cid"] = "";
 }
+
 if($_SESSION["cid"] != "") {
     $customer = $conn->getCustomer($_SESSION["cid"]);
     $val= $customer->fetch_assoc();
