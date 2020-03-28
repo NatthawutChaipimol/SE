@@ -5,12 +5,18 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
+<body background="/media/course-asset/html_content/bg_good.jpg">
+    
+    
+</body>
+</html>
+<html>
     <head>
         <?php
 
         ?>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="loginCSS.css" title="style1">
+    <link rel="stylesheet" type="text/css" href="login.css" title="style1">
     <title></title>
 </head>
 <body>
@@ -25,6 +31,7 @@ and open the template in the editor.
                 </tr>
             </table>
         </div>
+        
         <form class="login-form" action='' method=''>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>

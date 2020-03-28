@@ -164,3 +164,9 @@ body {
     background-color: #555555;
     color: white;
 }
+.backgroundimg{
+    background-image: url('/img/coffee.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 888;
+}
