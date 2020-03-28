@@ -4,7 +4,7 @@ class ConnectDBPro
 {
     public function connect()
     {
-        $dbhost = "26.216.63.243";
+        $dbhost = "26.212.245.113";
         $dbuser = "se2";
         $dbpassword = "";
         $db = 'db_se';
