@@ -58,12 +58,25 @@
 </head>
 <body>
 <?php
-    include 'header.php'
+    include 'header.php';
+    require_once './actionDBPro.php';
+    date_default_timezone_set("Asia/Bangkok");
+    $date = date('Y-m-d H:i:s');
+    $bId = $_REQUEST["bid"];
+    $con = new ConnectDBPro();
+    if ($con->connect()) {
+        $sql = "SELECT * FROM `bill` Where bId=".$bId."";
+        $result = mysqli_query($con->connect(), $sql);
+        $row = mysqli_fetch_array($result);
+    } else {
+        echo 'Failed';
+    }
 ?>
 <!--<body style="background-image: linear-gradient(#4C8577, white); background-size: cover; background-repeat: no-repeat;">-->
 <div style="width: 100%; margin-top: 100px; padding-right: 35%; padding-left: 35%; margin-bottom: 100px;">
 
     <table style="width: 100%; border: 1px solid #4C8577; background-color: white; padding: 10px;">
+    <form name="formPay" action='checkPro.php?sub=ยืนยัน&bId=<?php echo $bId ?>' method="POST" enctype="multipart/form-data"  >
         <tr>
             <td colspan="2" style="padding: 10px;">
                 <h2 style="color: #4C8577"> แจ้งโอนการชำระเงิน </h2>
@@ -74,7 +87,7 @@
                 คำสั่งซื้อหมายเลข :
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;"">
-                b0001
+                <?php  echo $row["bId"]; ?>
             </th>
         </tr>
         <tr>
@@ -82,7 +95,7 @@
                 จำนวนเงินที่ต้องชำระ :
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;"">
-                120 บาท
+                 <?php  echo $row["bTotal"]; ?>
             </th>
         </tr>
         <tr>
@@ -91,7 +104,7 @@
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;"">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="price" name="Price" placeholder="กรุณากรอกจำนวนเงินที่โอน">
+                    <input type="text" class="form-control" id="price" name="payTotal" placeholder="กรุณากรอกจำนวนเงินที่โอน">
                 </div>
             </th>
         </tr>
@@ -101,7 +114,7 @@
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;"">
                 <div class="form-group">
-                    <select class="form-control" id="bank" name="Bank">
+                    <select class="form-control" id="bank" name="payFormat">
                         <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
                         <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
                         <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
@@ -115,7 +128,8 @@
                 เวลาที่ทำการโอน :
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;">
-                <input id="Time" type="time" value="" hidden />
+                <input id="Time" type="datetime" name="payDate" value="<?php echo $date ?>" hidden />
+                <input id="Time" type="text" name="payStatus" value="0" hidden />
             </th>
         </tr>
         <tr>
@@ -125,7 +139,7 @@
             <td style="padding-left: 10px; padding-right: 10px;">
                 <!-- Upload image input-->
                 <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="seller_img">
+                    <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0" name="payImg">
                     <label id="upload-label" for="upload" class="font-weight-light text-muted">Choose file</label>
                     <div class="input-group-append">
                         <label for="upload" class="btn btn-light m-0 rounded-pill px-4"> <i class="fa fa-cloud-upload mr-2 text-muted"></i><small class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
@@ -141,11 +155,11 @@
         </tr>
         <tr>
             <td colspan="2" style="text-align: center; padding-bottom: 20px;">
-                <button type="button" class="bt2">ยืนยัน</button>
-                <button type="button" class="bt3">ยกเลิก</button>
+                <input type="submit"  class="button bt2" value="ยืนยัน">
+                <input type="button"  class="button bt3" value="ยกเลิก" onclick="location.href='listProduct.php'" required></input>
             </td>
         </tr>
-    </table>
+</form></table>
 
 </div>
 
