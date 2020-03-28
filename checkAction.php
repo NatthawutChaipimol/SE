@@ -23,4 +23,7 @@ if($c==1){
 }elseif ($c==4){
     $total = $_REQUEST["total"];
     $bid = $conn->insertBill($total,$_SESSION["cid"],$_SESSION["listProduct"]);
+    header("Location:showStatusBill.php?bid=".$bid);
+}elseif (c==5){
+
 }
