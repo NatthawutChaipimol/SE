@@ -47,7 +47,7 @@ class ConnectDBCustomr
         }
         else{
             echo 'update Incomplete';
-            Header("Location:addProduct.php");
+            Header("Location:add.php");
         }
     }
 }
