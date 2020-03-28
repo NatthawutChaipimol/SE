@@ -74,4 +74,17 @@ class connectDB_Ai
             return $value1["max"];
         } else echo "Cannot Insert";
     }
+    public function getScoreOFProduct($pid){
+        $sum = 0;
+        $result = mysqli_query($this->connect(),
+            "SELECT * FROM `review` where `pId` = $pid  ");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $sum = $sum+$row['rScore'];
+            }
+            return $sum/$result->num_rows;
+        }else{
+            return 0 ;
+        }
+    }
 }

@@ -18,8 +18,8 @@
             $result = $con->getAllProduct();
         }else{
             $s=$_REQUEST["search"];
-            $conn = new connectDB_Ai();
-            $result = $conn->searchProduct($s);
+            $con = new connectDB_Ai();
+            $result = $con->searchProduct($s);
             $_SESSION["page"] = "null";
         }
 
