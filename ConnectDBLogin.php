@@ -22,6 +22,9 @@ class ConnectDB
             $_SESSION['cid'] = $val["cid"];
             return $result;
         }
+        else{
+        header("Location:index.php");
+    }
     
 
 
