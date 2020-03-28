@@ -29,12 +29,12 @@ if($c==1){
     $conn->updateStatusBill($bid,"ตรวจสอบการชำระเงิน");
 
 }
-elseif($c==5){
+elseif($c==6){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] -= 1;
     header("Location:index.php");
 }
-elseif($c==6){
+elseif($c==7){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] += 1;
     header("Location:index.php");
