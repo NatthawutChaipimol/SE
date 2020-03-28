@@ -103,7 +103,11 @@
                 ?>
             </table>
                 <input type="button"  class="button bt2" value="เพิ่มข้อมูล" onclick="location.href='addPro.php'"></input>
+<<<<<<< HEAD
+                <button class="button bt3" value="แก้ไขสถานะของสินค้า">ลบข้อมูล</button>
+=======
                 <input type="submit" class="button bt3" value="ลบข้อมูล"></input>
+>>>>>>> 48bea26098e46a762fd2d827716b770f97cbf0d4
             </form>
         <br>
     </center>

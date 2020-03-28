@@ -22,7 +22,6 @@ $payDate = $_POST["payDate"];
 $payFormat = $_POST["payFormat"];
 $payTotal = $_POST["payTotal"];
 $bId = $_REQUEST["bId"];
-$dir = "img/";
 
 
 $con=new ConnectDBPro();
@@ -35,17 +34,16 @@ if($submit == 'บันทึก'){
 else if($submit == 'ยืนยันการแก้ไข'){
     echo "ok";
     if(move_uploaded_file($pImg["tmp_name"], "$dir".$pImg["name"])){
-        $con->update($pId,$pName , $pPrice, $pAmount,$pType, $pStatus, $pImg["name"]);
+        $con->update($pId,$pName , $pPrice, $pAmount,$pType, $pStatus, $pImg);
     }
 }
 else if($chPay == 'ยืนยัน'){
     echo "ok Pay";
     if(move_uploaded_file($payImg["tmp_name"], "$dir".$payImg["name"])){
-        $con->insertPay($payStatus , $payImg["name"] , $payDate , $payFormat , $payTotal , $bId);
+        $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
     }
 }
 else if($pId == 1 ){
-    $sql = "UPDATE FROM `product` SET `pStatus` = 1  WHERE `pId`=".$id."";
     for($i=0;$i<count($_POST["checkbox"]);$i++)
 	{
 		if($_POST["checkbox"][$i] != "")
