@@ -41,7 +41,7 @@
                 <div class="row">
                     <?php
                     while($row = $result->fetch_assoc()) {
-                        if($row['pType']=="เครื่องดืม"){?>
+                        if($row['pType']=="เครื่องดืม" && $row['pStatus']==1){?>
 
                     <div class="col-4">
                         <div class="card" >
@@ -85,7 +85,7 @@
                         $_SESSION["page"] = "null";
                     }
                     while($row = $result->fetch_assoc()) {
-                        if($row['pType']=="ขนม"){?>
+                        if($row['pType']=="ขนม" && $row['pStatus']==1){?>
 
                             <div class="col-4">
                                 <div class="card" >
