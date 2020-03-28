@@ -31,7 +31,7 @@
             </table>
         </div>
         
-        <form class="login-form" action='' method=''>
+        <form class="login-form" action='Checklogin.php?s=1' method=''>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>
