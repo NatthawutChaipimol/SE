@@ -21,13 +21,13 @@ class ConnectDB
         if($result->num_rows>0){
             $_SESSION['status'] = 'customer';
             $val = $result->fetch_assoc();
-            $_SESSION['cId'] = $val["cId"];
+            $_SESSION['cid'] = $val["cId"];
             return $result;
         }else{
             header("Location:login.php?cl=1");
         }
 
-
+//
     }
     
     

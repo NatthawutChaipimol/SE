@@ -30,7 +30,7 @@
                 </tr>
             </table>
         </div>
-        
+        //
         <form class="login-form" action='Checklogin.php?s=1' method="POST" >
             <?php if($_REQUEST['cl'] == 1){ ?>
                 <div class="alert alert-danger" role="alert">

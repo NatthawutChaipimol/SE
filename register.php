@@ -51,7 +51,7 @@ include 'header_1.php';
         var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
         var OC = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
 
-        if(user.value == "" || user.value.match(userf)){
+        if(user.value == "" && user.value.match(userf)){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
