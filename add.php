@@ -59,7 +59,7 @@ while($show = mysqli_fetch_array($result)){
     <div style="padding-top: 40px; padding-left: 150px; padding-right: 150px;">
         <div style="margin: 30px; border: 1px solid #c26f6f; width: 95%; border-radius: 5px;">
             <div style="margin: 20px;">
-                <form action="checkCustomer.php.php?ss=3" method="POST" enctype="multipart/form-data">
+                <form action="checkCustomer.php?ss=3" method="POST" enctype="multipart/form-data">
                     <table style="width: 100%;">
                         <tr>
                             <td rowspan="6" STYLE="width: 20%; text-align: center;">
