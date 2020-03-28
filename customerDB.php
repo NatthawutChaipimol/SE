@@ -40,7 +40,8 @@ class ConnectDBCustomr
         }
     }
     public function delCustomer($id){
-        $sql = "UPDATE 'customer' SET cStatus = '0' where cId = '".$id."' ";
+        $sql = "UPDATE `customer` SET `cStatus`= 0 WHERE cId = '".$id."' ";
+        //$sql2 = "UPDATE `customer` SET `cId`=[value-1],`cName`=[value-2],`cUsername`=[value-3],`cPassword`=[value-4],`cAddress`=[value-5],`cTel`=[value-6],`cStatus`=[value-7] WHERE 1"
         if(mysqli_query($this->connect(), $sql)){
             echo "true";
             header("Location:add.php");
