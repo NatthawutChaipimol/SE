@@ -39,17 +39,15 @@ class ConnectDBCustomr
             echo 'Insert Incomplete';
         }
     }
-    public function deleteCustomer($cId)
-    {
-        $sql = "UPDATE `customer` SET `cStatus = 0 WHERE cId =".$cId;
-        if (mysqli_query($this->connect(), $sql)) {
+    public function delCustomer($id){
+        $sql = "UPDATE 'customer' SET cStatus = '0' where cId = '".$id."' ";
+        if(mysqli_query($this->connect(), $sql)){
             echo "true";
             header("Location:add.php");
         }
         else{
             echo 'update Incomplete';
-            header("Location:add.php");
+            Header("Location:addProduct.php");
         }
-
     }
 }
