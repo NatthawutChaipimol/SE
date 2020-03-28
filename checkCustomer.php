@@ -27,7 +27,7 @@ if($ss == 1){
     }
 }
 else if($ss == 2){
-    $id = $_SESSION['cid'];
+
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $name = $_POST['name'];
@@ -40,7 +40,12 @@ else if($ss == 2){
     $em = $con->getCustomer($_SESSION['cid']);
     $valEm = $em->fetch_assoc();
     $result = mysqli_query($con->connect(),$sql);
-
+    echo $id;
+    echo $user;
+    echo $pass;
+    echo $name;
+    echo $tel;
+    echo $address;
     if( ($result->num_rows == 0 ) || $user == $valEm["cUsername"]){
         $con->UpdateCustomer($id,$user, $pass, $name, $tel, $address, $status);
     }else{

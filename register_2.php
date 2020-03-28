@@ -27,7 +27,7 @@ $row = $customer->fetch_assoc();
 
             ?>
             <input type="text" id='user' placeholder="Username" name='user' value="<?php echo $row["cUsername"]; ?>"/>
-            <input type='password' id='pass' placeholder='Password' name='pass' value="<?php echo $row["cPassword"]; ?>"/>
+            <input type='text' id='pass' placeholder='Password' name='pass' value="<?php echo $row["cPassword"]; ?>"/>
             <input type="text" id='name' placeholder="Name" name='name' value="<?php echo $row["cName"]; ?>"/>
             <input type="text" id='tel' placeholder="Phone number" name='tel' value="<?php echo $row["cTel"]; ?>"/>
             <textarea placeholder="Address" name='address' id='address'  style="width: 100%; border: none; background-color: #F2F2F2; height: 100px; padding: 15px; color: #555555;"><?php echo $row["cAddress"]; ?></textarea>

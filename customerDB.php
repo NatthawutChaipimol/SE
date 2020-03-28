@@ -32,9 +32,10 @@ class ConnectDBCustomr
     }
     public function UpdateCustomer($id,$user, $pass, $name, $tel, $address, $status)
     {
+        echo $id;
         $sql = "UPDATE `customer` SET `cName`='".$name."',`cUsername`='".$user."',`cPassword`='".$pass."',`cAddress`='".$address."',`cTel`='".$tel."',`cStatus`='".$name."' WHERE cId ='".$id."' ";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:register_2.php");
+            //header("Location:register_2.php?n=0");
         } else {
             echo 'Insert Incomplete';
         }
