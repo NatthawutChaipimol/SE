@@ -33,7 +33,7 @@ elseif($c==6){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] -= 1;
     if($_SESSION["listProduct"][$pid] == 0 ){
-
+        unset($_SESSION["listProduct"][$pid]);
     }
     header("Location:index.php");
 }
