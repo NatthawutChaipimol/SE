@@ -42,7 +42,5 @@ class ConnectDBPro
            "INSERT INTO `review`(`pId`,`cId`,`rDate`,`rDetail`,`rScore`) value ('".$pId."','".$cId."','".$date."','".$detail."','".$score."')");
        mysqli_query($this->connect(),
            "UPDATE `bill` SET  `bReviewStatus` = 1 where `bId` = $bId");
-       header("Location:showStatusBill.php?bid=1");
-
    }
 }

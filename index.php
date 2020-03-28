@@ -31,7 +31,8 @@
                 <h5 class="mt-4">หมวดกาแฟ</h5>
                 <hr>
                 <div class="row">
-                    <?php while($row = $result->fetch_assoc()) {?>
+                    <?php
+                    while($row = $result->fetch_assoc()) {?>
                     <div class="col-4">
                         <div class="card" >
                             <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." onclick="location.href = 'showReview.php?pId=<?php echo $row['pId']?>'" >

@@ -48,32 +48,32 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <form action="/SE/chackReview.php" method="post" onsubmit="return chackInput()">
                         <h3 class="font-weight-light " style="text-align: center">รีวิวสินค้า</h3>
                         <?php
-
+                        $j=0;
                         while($order = $orders->fetch_assoc()) {
                             $products = $conn->getProduct($order["pId"]);
                             $valPro = $products->fetch_assoc();
                             ?>
                             <div class="card mt-2" style="width: 100%;">
                                 <div class="card-body" >
-
                                     <h5 class="mt-2"><?php echo $valPro["pName"] ?></h5>
-                                    <input type="hidden" id = "pId" name = "pId" value= <?php echo $order["pId"] ?> >
-                                    <input type="hidden" id = "star" value="0" name = "star">
+                                    <input type="hidden" id = "pId" name = "pId<?php echo $j; ?>" value= <?php echo $order["pId"] ?> >
                                     <input type="hidden" id = "bId" value="<?php echo $bid ?>" name = "bId">
+                                    <input type="hidden" id = "star<?php echo $j; ?>" value="0" name = "star<?php echo $j; ?>">
                                     <?php
                                     for($i=1 ; $i<=5 ; $i++) {
                                         ?>
-                                        <a onclick="clickStar( <?php echo $i ?>)"><i class="far fa-star" style="font-size: 25px;color: gold" id="star<?php echo $i ?>"></i></a>
+                                        <a onclick="clickStar( <?php echo $i ?> , <?php echo $j ?> )"><i class="far fa-star" style="font-size: 25px;color: gold" id="<?php echo $j ?>star<?php echo $i ?>"></i></a>
                                         <?php
                                     }
                                     ?>
-                                    <textarea id="detail" name="detail" class="form-control mb-1 mt-2" style="border-color: #4C8577" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
+                                    <textarea id="detail<?php echo $j; ?>" name="detail<?php echo $j; ?>" class="form-control mb-1 mt-2" style="border-color: #4C8577" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
                                 </div>
                             </div>
                             <?php
-
+                            $j++;
                         }
                         ?>
+                        <input type="hidden" id="j" value="<?php echo $j; ?>" name="j">
                         <button type="submit" class="bt2 float-right mt-2" style="width: 20%">รีวิว</button>
                     </form>
                 </div>
@@ -94,6 +94,7 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     </tr>
                     <?php
                     $orders = $conn->getOrder($bid);
+
                     while($order = $orders->fetch_assoc()) {
                         $products = $conn->getProduct($order["pId"]);
                         $valPro = $products->fetch_assoc();
@@ -112,42 +113,42 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                             <td colspan="2"style="text-align: right;border: none">ราคารวมสุทธิ</td>
                             <td style="border: none"><?php echo $val["bTotal"]; ?></td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
 <script>
-    function clickStar(n) {
-        document.getElementById("star1").className = "far fa-star";
-        document.getElementById("star2").className = "far fa-star";
-        document.getElementById("star3").className = "far fa-star";
-        document.getElementById("star4").className = "far fa-star";
-        document.getElementById("star5").className = "far fa-star";
-        document.getElementById("star").value = n;
+    function clickStar(n,j) {
+        document.getElementById(j+"star1").className = "far fa-star";
+        document.getElementById(j+"star2").className = "far fa-star";
+        document.getElementById(j+"star3").className = "far fa-star";
+        document.getElementById(j+"star4").className = "far fa-star";
+        document.getElementById(j+"star5").className = "far fa-star";
+        document.getElementById("star"+j).value = n;
         for(var i=1;i<=n;i++){
-            document.getElementById("star"+i).className = "fas fa-star";
+            document.getElementById(j+"star"+i).className = "fas fa-star";
         }
-        document.getElementById("star").value = n;
     }
     function chackInput() {
-        if( document.getElementById("star").value!=0){
-            if(document.getElementById("detail").value !=  ""){
-                return true
+        j = document.getElementById("j").value;
+        for(var i=0;i<=j;i++){
+            if(document.getElementById("star"+i).value != 0){
+                if(document.getElementById("detail"+i).value !=  ""){
+                    if(i==j) {
+                        return true
+                    }
+                }
+                else{
+                    alert("กรุณาใส่ รายละเอียด")
+                    return false
+                }
             }
             else{
-
-                alert("กรุณาใส่ รายละเอียด")
+                alert("กรุณาให้คะแนน")
                 return false
             }
-        }
-        else{
-
-            alert("กรุณาให้คะแนน")
-            return false
         }
     }
 </script>

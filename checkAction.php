@@ -32,6 +32,9 @@ if($c==1){
 elseif($c==6){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] -= 1;
+    if($_SESSION["listProduct"][$pid] == 0 ){
+
+    }
     header("Location:index.php");
 }
 elseif($c==7){
