@@ -18,7 +18,7 @@ if(!isset($_SESSION["page"])){
     $_SESSION["page"] = "null";
 }
 $bt = "เข้าสู่ระบบ";
-$link = "login.php";
+$link = "login.php?cl=0";
 $link2 = "";
 $uname = "";
 if(!isset($_SESSION["cid"])){
@@ -37,7 +37,7 @@ if($_SESSION["cid"] != "") {
 }
 ?>
 <nav class="navbar navbar-light" style="background-color: #4C8577;">
-    <a class="navbar-brand text-light" href="" style="color: #D8F4C6">
+    <a class="navbar-brand text-light" href="index.php" style="color: #D8F4C6">
         <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         L’ arbre Cafe
     </a>
@@ -53,8 +53,10 @@ if($_SESSION["cid"] != "") {
             <?php echo $uname; ?>
         </a>
         <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>
+        <?php if($uname == "admin"){ ?>
         <button class="bt1 my-2 my-sm-0 ml-3"  onclick="location.href='listProduct.php'">จัดการข้อมูลสินค้า</button>
         <button class="bt1 my-2 my-sm-0 ml-3" onclick="location.href='changeStatus.php'">จัดการข้อมูลการสั่งซื้อ</button>
+        <?php } ?>
     </div>
 
 </nav>
