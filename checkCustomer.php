@@ -46,5 +46,21 @@ else if($ss == 2){
     }else{
         header("Location:register_2.php?n=1");
     }
-
 }
+else if($ss == 3){
+    $id = $_REQUEST['cid'];
+    $con = new ConnectDBCustomr();
+    $sql = "SELECT `cUsername` FROM `customer` where cUsername = '".$user."'";
+    $em = $con->getCustomer($_SESSION['cid']);
+    $valEm = $em->fetch_assoc();
+    $result = mysqli_query($con->connect(),$sql);
+    if( ($result->num_rows == 0 ) || $user == $valEm["cUsername"]){
+        $con->delCustomer($id);
+    }else{
+        header("Location:register_2.php?n=1");
+    }
+
+
+    
+
+}  

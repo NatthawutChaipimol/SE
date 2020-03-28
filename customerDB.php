@@ -21,7 +21,7 @@ class ConnectDBCustomr
     {
         $sql = "INSERT INTO `customer`(`cName`, `cUsername`, `cPassword`, `cAddress`, `cTel`, `cStatus`) VALUES ( '" . $name . "','" . $user . "', '" . $pass . "', '" . $address . "','" . $tel . "','" . $status . "')";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:changeStatus.php");
+            header("Location:login.php?cl=0");
         } else {
             echo 'Insert Incomplete';
         }
@@ -34,22 +34,20 @@ class ConnectDBCustomr
     {
         $sql = "UPDATE `customer` SET `cName`='".$name."',`cUsername`='".$user."',`cPassword`='".$pass."',`cAddress`='".$address."',`cTel`='".$tel."',`cStatus`='".$name."' WHERE cId ='".$id."' ";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:changeStatus.php");
+            header("Location:register_2.php");
         } else {
             echo 'Insert Incomplete';
         }
     }
-    public function deleteCustomer($cId)
-    {
-        $sql = "UPDATE `customer` SET `cStatus = 0 WHERE cId =".$cId;
-        if (mysqli_query($this->connect(), $sql)) {
+    public function delCustomer($id){
+        $sql = "UPDATE 'customer' SET cStatus = '0' where cId = '".$id."' ";
+        if(mysqli_query($this->connect(), $sql)){
             echo "true";
             header("Location:add.php");
         }
         else{
             echo 'update Incomplete';
-            header("Location:add.php");
+            Header("Location:add.php");
         }
-
     }
 }
