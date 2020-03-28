@@ -2,6 +2,7 @@
 require_once 'actionDBPro.php';
 error_reporting(E_ALL^E_NOTICE);
 
+
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $submit = $_POST['submit'];
@@ -43,6 +44,9 @@ else if($chPay == 'ยืนยัน'){
     
 }
 else if($pId == "1" ){
+
+    $sql = "DELETE FROM `product` WHERE `pId`='".$id."'";
+    
     for($i=0;$i<count($_POST["checkbox"]);$i++)
 	{
 		if($_POST["checkbox"][$i] != "")
