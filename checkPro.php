@@ -22,6 +22,7 @@ $payDate = $_POST["payDate"];
 $payFormat = $_POST["payFormat"];
 $payTotal = $_POST["payTotal"];
 $bId = $_REQUEST["bId"];
+$dir = "img/";
 
 
 $con=new ConnectDBPro();
