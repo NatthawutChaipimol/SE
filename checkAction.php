@@ -33,7 +33,7 @@ elseif($c==6){
     $pid = $_REQUEST["pid"];
     $_SESSION["listProduct"][$pid] -= 1;
     if($_SESSION["listProduct"][$pid] == 0 ){
-
+        unset($_SESSION["listProduct"][$pid]);
     }
     header("Location:index.php");
 }
@@ -44,5 +44,6 @@ elseif($c==7){
 }
 elseif ($c==8){
     $s = $_POST["Search"];
-
+    $_SESSION["page"] = "search";
+    header("Location:index.php?search=".$s);
 }

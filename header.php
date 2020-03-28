@@ -19,9 +19,8 @@ if(!isset($_SESSION["page"])){
 }
 $bt = "เข้าสู่ระบบ";
 $link = "login.php";
-$link2 = "mainAdmin.php";
+$link2 = "";
 $uname = "";
-$_SESSION["cid"] = 1;
 if(!isset($_SESSION["cid"])){
     $_SESSION["cid"] = "";
 }
@@ -44,16 +43,19 @@ if($_SESSION["cid"] != "") {
     </a>
 <!--    <form class="form-inline" action="--><?php //echo $link; ?><!--" method='POST'>-->
 
-        <a style="font-size: 20px;color: #D8F4C6" href="<?php echo $link2; ?>">
-            <?php echo $uname; ?>
-        </a>
+
 
 
 <!--        <button class="bt1 my-2 my-sm-0 ml-3" type="submit">--><?php //echo $bt; ?><!--</button>-->
 <!--    </form>-->
-    <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>
-    <button class="bt1 my-2 my-sm-0 ml-3"  onclick="location.href='listProduct.php'">จัดการข้อมูลสินค้า</button>
-    <button class="bt1 my-2 my-sm-0 ml-3" onclick="location.href='changeStatus.php'">จัดการข้อมูลการสั่งซื้อ</button>
+    <div class="form-group" style="margin-bottom: 0px">
+        <a style="font-size: 20px;color: #D8F4C6" href="<?php echo $link2; ?>">
+            <?php echo $uname; ?>
+        </a>
+        <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>
+        <button class="bt1 my-2 my-sm-0 ml-3"  onclick="location.href='listProduct.php'">จัดการข้อมูลสินค้า</button>
+        <button class="bt1 my-2 my-sm-0 ml-3" onclick="location.href='changeStatus.php'">จัดการข้อมูลการสั่งซื้อ</button>
+    </div>
 
 </nav>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

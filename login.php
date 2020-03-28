@@ -32,6 +32,11 @@
         </div>
         
         <form class="login-form" action='Checklogin.php?s=1' method="POST" >
+            <?php if($_REQUEST['cl'] == 1){ ?>
+                <div class="alert alert-danger" role="alert">
+                    Username หรือ Password ไม่ถูกต้อง...
+                </div>
+            <?php } ?>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>
