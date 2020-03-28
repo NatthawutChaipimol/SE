@@ -19,7 +19,7 @@ class ConnectDB
         if($result->num_rows>0){
             $_SESSION['status'] = '1';
             $val = $result->fetch_assoc();
-            $_SESSION['cid'] = $val["cid"];
+            $_SESSION['cid'] = $val['cid'];
             return $result;
         }
         else{
