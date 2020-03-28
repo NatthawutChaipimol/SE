@@ -28,15 +28,21 @@ class ConnectDBPro
         $sum = 0;
         $result = mysqli_query($this->connect(),
             "SELECT * FROM `review` where `pId` = $pid  ");
-        if ($result->num_rows > 0) {
+            if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $sum = $sum+$row['rScore'];
             }
-
             return $sum/$result->num_rows;
         }else{
             return 0 ;
         }
-
     }
+   public function addReview($pId,$cId,$date,$detail,$score,$bId){
+       mysqli_query($this->connect(),
+           "INSERT INTO `review`(`pId`,`cId`,`rDate`,`rDetail`,`rScore`) value ('".$pId."','".$cId."','".$date."','".$detail."','".$score."')");
+       mysqli_query($this->connect(),
+           "UPDATE `bill` SET  `bReviewStatus` = 1 where `bId` = $bId");
+       header("Location:showStatusBill.php?bid=1");
+
+   }
 }

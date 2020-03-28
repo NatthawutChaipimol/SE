@@ -14,7 +14,9 @@ if($s==1){
         $_SESSION['cUsername'] = $_POST['cUsername'];
     }
     if($_SESSION['status'] == '1'){
+        echo $_SESSION['cid'];
         header("Location:index.php");
+        
     }else{
         echo" Error";
     }

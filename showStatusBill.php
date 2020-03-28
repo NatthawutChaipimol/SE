@@ -14,6 +14,7 @@ $bill = $conn->getBill($bid);
 $val = $bill->fetch_assoc();
 $orders = $conn->getOrder($bid);
 $text = "";
+
 if($val["bDeliveryStatus"] == "รอการชำระ") $text = "กรุณาชำระเงินก่อนค่ะ";
 else if($val["bDeliveryStatus"] == "ตรวจสอบการชำระเงิน") $text = "กรุณารอสักครู่กำลังตรวจสอบการชำระเงินของคุณอยู่";
 else if($val["bDeliveryStatus"] == "กำลังเตรียมอาหาร") $text = "กรุณารอสักครู่กำลังเตรียมอาหารให้คุณ";
@@ -41,13 +42,13 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <img src="img/เลขที่บัญชี1.png" style="width: 25rem" class="mt-3">
                 </div>
             </div>
-            <?php } elseif ($val["bDeliveryStatus"] == "ส่งสินค้าสำเร็จ") {?>
+            <?php } elseif ($val["bDeliveryStatus"] == "ส่งสินค้าสำเร็จ" && $val["bReviewStatus"]==0) {?>
             <div class="card mt-2 border-success rounded" style="width: 100%; padding: 25px">
                 <div class="card-body" >
-                    <form action="" method="post">
+                    <form action="/SE/chackReview.php" method="post" onsubmit="return chackInput()">
                         <h3 class="font-weight-light " style="text-align: center">รีวิวสินค้า</h3>
                         <?php
-                        $j=1;
+
                         while($order = $orders->fetch_assoc()) {
                             $products = $conn->getProduct($order["pId"]);
                             $valPro = $products->fetch_assoc();
@@ -56,28 +57,30 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                                 <div class="card-body" >
 
                                     <h5 class="mt-2"><?php echo $valPro["pName"] ?></h5>
-                                    <input type="hidden" id = "star<?php echo $j; ?>" value="0" name = "star<?php echo $j; ?>">
+                                    <input type="hidden" id = "pId" name = "pId" value= <?php echo $order["pId"] ?> >
+                                    <input type="hidden" id = "star" value="0" name = "star">
+                                    <input type="hidden" id = "bId" value="<?php echo $bid ?>" name = "bId">
                                     <?php
                                     for($i=1 ; $i<=5 ; $i++) {
                                         ?>
-                                        <a onclick="clickStar( <?php echo $i ?>, <?php echo $j ?>)"><i class="far fa-star" style="font-size: 25px;color: gold" id="<?php echo $j ?>star<?php echo $i ?>"></i></a>
+                                        <a onclick="clickStar( <?php echo $i ?>)"><i class="far fa-star" style="font-size: 25px;color: gold" id="star<?php echo $i ?>"></i></a>
                                         <?php
                                     }
                                     ?>
-                                    <textarea name="detail<?php echo $j; ?>" class="form-control mb-1 mt-2" style="border-color: #4C8577" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
+                                    <textarea id="detail" name="detail" class="form-control mb-1 mt-2" style="border-color: #4C8577" placeholder="ตัวอย่างเช่น : อาหารอร่อยมาก"></textarea>
                                 </div>
                             </div>
                             <?php
-                            $j++;
 
                         }
-                        ?><input type="hidden" value="<?php echo $j; ?>" name="j">
+                        ?>
                         <button type="submit" class="bt2 float-right mt-2" style="width: 20%">รีวิว</button>
                     </form>
                 </div>
             </div>
             <?php } ?>
         </div>
+
         <div class="col-1"></div>
         <div class="col-4">
             <div class="border border-success rounded p-3">
@@ -101,12 +104,12 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                         <td><?php echo $valPro["pPrice"]*$order["oAmount"]; ?>B.</td>
                     </tr>
                     <tr>
-                        <td colspan="2">ค่าจัดส่ง</td>
+                        <td colspan="2" style="text-align: right">ค่าจัดส่ง</td>
                         <td>20B.</td>
                     </tr>
                         <tr>
-                            <td colspan="2">ราคารวม</td>
-                            <td><?php echo $val["bTotal"]; ?></td>
+                            <td colspan="2"style="text-align: right;border: none">ราคารวม</td>
+                            <td style="border: none"><?php echo $val["bTotal"]; ?></td>
                         </tr>
                     <?php } ?>
                     </tbody>
@@ -114,21 +117,38 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
             </div>
         </div>
     </div>
+
 </div>
 <script>
-
-    function clickStar(n,j) {
-        document.getElementById(j+"star1").className = "far fa-star";
-        document.getElementById(j+"star2").className = "far fa-star";
-        document.getElementById(j+"star3").className = "far fa-star";
-        document.getElementById(j+"star4").className = "far fa-star";
-        document.getElementById(j+"star5").className = "far fa-star";
-        document.getElementById("star"+j).value = n;
+    function clickStar(n) {
+        document.getElementById("star1").className = "far fa-star";
+        document.getElementById("star2").className = "far fa-star";
+        document.getElementById("star3").className = "far fa-star";
+        document.getElementById("star4").className = "far fa-star";
+        document.getElementById("star5").className = "far fa-star";
+        document.getElementById("star").value = n;
         for(var i=1;i<=n;i++){
-            document.getElementById(j+"star"+i).className = "fas fa-star";
+            document.getElementById("star"+i).className = "fas fa-star";
+        }
+        document.getElementById("star").value = n;
+    }
+    function chackInput() {
+        if( document.getElementById("star").value!=0){
+            if(document.getElementById("detail").value !=  ""){
+                return true
+            }
+            else{
+
+                alert("กรุณาใส่ รายละเอียด")
+                return false
+            }
+        }
+        else{
+
+            alert("กรุณาให้คะแนน")
+            return false
         }
     }
-
 </script>
 </body>
 </html>
