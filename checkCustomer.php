@@ -46,5 +46,10 @@ else if($ss == 2){
     }else{
         header("Location:register_2.php?n=1");
     }
-
 }
+else if($ss == 3){
+    $id = $_REQUEST['cId'];
+    $con = new ConnectDBCustomr();
+    $con->delCustomer($id);
+
+}  
