@@ -29,7 +29,7 @@ if($_SESSION["cid"] != "") {
     $customer = $conn->getCustomer($_SESSION["cid"]);
     $val= $customer->fetch_assoc();
     if($val["cName"] != "admin"){
-        $link2 = "";//โปรไฟล์
+        $link2 = "register_2.php";//โปรไฟล์
     }
     $uname = $val["cName"];
     $bt = "ออกจากระบบ";
@@ -52,11 +52,13 @@ if($_SESSION["cid"] != "") {
         <a style="font-size: 20px;color: #D8F4C6" href="register_2.php?n=0">
             <?php echo $uname; ?>
         </a>
-        <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>
+
         <?php if($uname == "admin"){ ?>
         <button class="bt1 my-2 my-sm-0 ml-3"  onclick="location.href='listProduct.php'">จัดการข้อมูลสินค้า</button>
         <button class="bt1 my-2 my-sm-0 ml-3" onclick="location.href='changeStatus.php'">จัดการข้อมูลการสั่งซื้อ</button>
+         <button class="bt1 my-2 my-sm-0 ml-3" onclick="location.href='add.php'">จัดการข้อมูลลูกค้า</button>
         <?php } ?>
+        <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>
     </div>
 
 </nav>
