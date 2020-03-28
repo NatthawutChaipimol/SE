@@ -136,7 +136,7 @@ include 'header.php'
                                             ?>
                                             <tr>
                                                 <td colspan="2">
-                                                    <img src="img/<?php echo $img["payImg"]; ?>">
+                                                    <img style="width: " src="img/<?php echo $img["payImg"]; ?>">
                                                 </td>
                                             </tr>
                                             <?php
