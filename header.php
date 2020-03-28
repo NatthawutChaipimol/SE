@@ -18,7 +18,7 @@ if(!isset($_SESSION["page"])){
     $_SESSION["page"] = "null";
 }
 $bt = "เข้าสู่ระบบ";
-$link = "login.php";
+$link = "login.php?cl=0";
 $link2 = "";
 $uname = "";
 if(!isset($_SESSION["cid"])){

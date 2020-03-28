@@ -12,7 +12,7 @@
 include 'header_1.php';
 require_once './customerDB.php';
 $conn = new ConnectDBCustomr();
-$customer = $conn->getCustomer($_SESSION['cId']);
+$customer = $conn->getCustomer($_SESSION['cid']);
 $row = $customer->fetch_assoc();
 ?>
 <div class="login-page"  >
@@ -54,31 +54,23 @@ $row = $customer->fetch_assoc();
         var nameformat = /^[A-Za-z0-9ก-ฮ_ะาิีึืุูเะแโั ]{2,30}$/;
         var OC = /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/;
 
-        if(user.value == "" || user.value.match(userf)){
+        if(user.value == "" && user.value.match(userf)){
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
-        else if(pass.value == "" || pass.value.match(passw)){
+        else if(pass.value == "" && pass.value.match(passw)){
             window.alert('กรุณากรอกข้อมูล Password')
             return false
         }
-        else if(name.value == "" || name.value.match(nameformat)){
+        else if(name.value == "" && name.value.match(nameformat)){
             window.alert('กรุณากรอกข้อมูล Name')
             return false
         }
-        else if(tel.value == "" || tel.value.match(phoneno)){
+        else if(tel.value == "" && tel.value.match(phoneno)){
             window.alert('กรุณากรอกข้อมูล Phone number')
             return false
         }
-        else if(address.value == "" || address.value.match(nameformat)){
+        else if(address.value == "" && address.value.match(nameformat)){
             window.alert('กรุณากรอกข้อมูล Address')
             return false
         }

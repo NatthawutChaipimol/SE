@@ -21,22 +21,33 @@ class ConnectDBCustomr
     {
         $sql = "INSERT INTO `customer`(`cName`, `cUsername`, `cPassword`, `cAddress`, `cTel`, `cStatus`) VALUES ( '" . $name . "','" . $user . "', '" . $pass . "', '" . $address . "','" . $tel . "','" . $status . "')";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:changeStatus.php");
+            header("Location:login.php?cl=0");
         } else {
             echo 'Insert Incomplete';
         }
     }
-    public function getCustomer($cId){
-        $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cId."'";
+    public function getCustomer($cid){
+        $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cid."'";
         return $this->connect()->query($sql);
     }
     public function UpdateCustomer($id,$user, $pass, $name, $tel, $address, $status)
     {
         $sql = "UPDATE `customer` SET `cName`='".$name."',`cUsername`='".$user."',`cPassword`='".$pass."',`cAddress`='".$address."',`cTel`='".$tel."',`cStatus`='".$name."' WHERE cId ='".$id."' ";
         if (mysqli_query($this->connect(), $sql)) {
-            header("Location:changeStatus.php");
+            header("Location:register_2.php");
         } else {
             echo 'Insert Incomplete';
+        }
+    }
+    public function delCustomer($id){
+        $sql = "UPDATE 'customer' SET cStatus = '0' where cId = '".$id."' ";
+        if(mysqli_query($this->connect(), $sql)){
+            echo "true";
+            header("Location:add.php");
+        }
+        else{
+            echo 'update Incomplete';
+            Header("Location:addProduct.php");
         }
     }
 }
