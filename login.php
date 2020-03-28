@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="button.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <a class="navbar-brand text-light" href="index.php" style="color: #D8F4C6">
+        <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        L’ arbre Cafe
+    </a>
+</head>
+
         <?php
 
         ?>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="loginCSS.css" title="style1">
+    <link rel="stylesheet" type="text/css" href="login.css" title="style1">
     <title></title>
 </head>
 <body>
@@ -20,12 +25,13 @@ and open the template in the editor.
             <table style="width: 100%;">
                 <tr>
                     <td style="text-align: center;">
-                        <img src="./img/logo.png" width="200" height="200">
+                        
                     </td>
                 </tr>
             </table>
         </div>
-        <form class="login-form" action='' method=''>
+        
+        <form class="login-form" action='index.php' method=''>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>

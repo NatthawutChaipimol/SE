@@ -16,7 +16,19 @@ class ConnectDB
     public function login($cUsername, $cPassword){
         $sql = "SELECT * FROM `customer`WHERE cUsername = '".$cUsername."' AND cPassword = '".$cPassword."'";
         $result = $this->connect()->query($sql);
+        if($result->num_rows>0){
+            $_SESSION['status'] = '1';
+            $val = $result->fetch_assoc();
+            $_SESSION['cid'] = $val['cid'];
+            return $result;
+        }
+        else{
+        header("Location:index.php");
     }
+    
 
+
+    }
+    
     
 }
