@@ -39,16 +39,16 @@ class ConnectDBCustomr
             echo 'Insert Incomplete';
         }
     }
-    public function delCustomer($id){
-        $sql = "UPDATE `customer` SET `cStatus`= 0 WHERE cId = '".$id."' ";
-        //$sql2 = "UPDATE `customer` SET `cId`=[value-1],`cName`=[value-2],`cUsername`=[value-3],`cPassword`=[value-4],`cAddress`=[value-5],`cTel`=[value-6],`cStatus`=[value-7] WHERE 1"
+    public function delCustomer($cUsername){
+
+        $sql = "UPDATE `customer` SET `cStatus`= 0 WHERE `cUsername`='".$cUsername."'";
         if(mysqli_query($this->connect(), $sql)){
             echo "true";
             header("Location:add.php");
         }
         else{
             echo 'update Incomplete';
-            Header("Location:add.php");
+             Header("Location:add.php");
         }
     }
 }

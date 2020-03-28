@@ -50,9 +50,13 @@ else if($ss == 2){
 else if($ss == 3){
     $user = $_POST['user'];
     $con = new ConnectDBCustomr();
-    $sql = "SELECT `cId` FROM `customer` where cUsername = '".$user."'";
+    $sql = "SELECT `cUsername` FROM `customer` where cUsername = '".$user."'";
+
     $result = mysqli_query($con->connect(),$sql);
-    $con->delCustomer($result);
-    echo $result;
+    if($result->num_rows > 0){
+        $con->delCustomer($user);
+    }
+
+
 
 }  
