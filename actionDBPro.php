@@ -26,7 +26,17 @@ class ConnectDBPro
         } else echo "Cannot Insert";
         echo "'".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."'";
     }
+    public function insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId)
+    {
+        $sql =  "INSERT INTO `pay`(`payStatus`, `payImg`, `payDate`, `payFormat`, `payTotal`, `bId`) 
+        VALUES ('.$payStatus.','".$payImg."','".$payDate."','".$payFormat."','.$payTotal.','.$bId.',)";
 
+        if (mysqli_query($this->connect(), $sql)) {
+            echo "Can Insert Pay !!!";
+            //header("Location:index.php");
+        } else echo "Cannot Insert Pay";
+        echo "'.$payStatus.','".$payImg."','.$payDate.','".$payFormat."','.$payTotal.','.$bId.',";
+    }
     public function update($pId, $pName , $pPrice, $pAmount, $pType, $pStatus, $pImg)
     {
         $sql =  "UPDATE `product` SET `pName`='".$pName."',`pPrice`='.$pPrice.',`pAmount`='.$pAmount.'
