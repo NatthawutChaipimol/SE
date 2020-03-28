@@ -19,9 +19,8 @@ if(!isset($_SESSION["page"])){
 }
 $bt = "เข้าสู่ระบบ";
 $link = "login.php";
-$link2 = "mainAdmin.php";
+$link2 = "";
 $uname = "";
-$_SESSION["cid"] = 1;
 if(!isset($_SESSION["cid"])){
     $_SESSION["cid"] = "";
 }

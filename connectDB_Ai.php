@@ -16,6 +16,10 @@ class connectDB_Ai
         }
         return $conn;
     }
+    public function searchProduct($s){
+        $sql = "SELECT * FROM `product` WHERE `pName` LIKE '%".$s."%'";
+        return $this->connect()->query($sql);
+    }
     public function updateStatusBill($bid, $status){
         $sql = "Update bill set bDeliveryStatus = '".$status."' where bId = ".$bid;
         if(mysqli_query($this->connect(), $sql)){

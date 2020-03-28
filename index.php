@@ -13,8 +13,16 @@
         include 'header.php';
         require_once 'DBindex.php';
         require_once './ConnectDB_Ai.php';
-        $con = new ConnectDBPro();
-        $result = $con->getAllProduct();
+        if($_SESSION["page"] == "null"){
+            $con = new ConnectDBPro();
+            $result = $con->getAllProduct();
+        }else{
+            $s=$_REQUEST["search"];
+            $conn = new connectDB_Ai();
+            $result = $conn->searchProduct($s);
+            $_SESSION["page"] = "null";
+        }
+
     ?>
     <form class="form-inline justify-content-center" action="checkAction.php?c=8" onsubmit="return checkSearch()" method="POST">
         <div class="btn-group mt-2">
@@ -125,6 +133,15 @@
     <script>
         function ALerttest() {
             alert("TST5555");
+        }function checkSearch() {
+            let x = document.getElementById("SearchID");
+            if(x.value == ""){
+                window.alert('กรุณาใส่ข้อความที่ต้องการค้นหา')
+                return false
+            }
+            else{
+                return true
+            }
         }
     </script>
 </body>

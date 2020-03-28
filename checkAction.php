@@ -44,5 +44,6 @@ elseif($c==7){
 }
 elseif ($c==8){
     $s = $_POST["Search"];
-
+    $_SESSION["page"] = "search";
+    header("Location:index.php?search=".$s);
 }
