@@ -15,7 +15,7 @@
         }else if($bill["bDeliveryStatus"] == "กำลังเตรียมอาหาร"){
             $status = "กำลังส่ง";
         }else if($bill["bDeliveryStatus"] == "กำลังส่ง"){
-            $status = "ส่งสำเร็จ";
+            $status = "ส่งสำเร็จแล้ว";
         }
 
         $con->updateStatus($id, $status);
