@@ -34,7 +34,7 @@ class ConnectDBPro
 
         if (mysqli_query($this->connect(), $sql)) {
             echo "Can Insert Pay !!!";
-            header("Location:index.php");
+            header("Location:checkAction.php?c=5&bid=".$bId);
         } else echo "Cannot Insert Pay";
         echo "'.$payStatus.','".$payImg."','.$payDate.','".$payFormat."','.$payTotal.','.$bId.',";
     }

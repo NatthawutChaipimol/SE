@@ -30,7 +30,7 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <h2><?php echo $val["bDeliveryStatus"]; ?></h2>
                     <h4><?php echo $text; ?></h4>
                     <?php if($val["bDeliveryStatus"] == "รอการชำระ") {?>
-                    <button type="button" class="bt2" style="width: 130px">แจ้งโอน</button>
+                    <a href="payment.php?bid=<?php echo $val["bId"]?>"><button type="button" class="bt2" style="width: 130px">แจ้งโอน</button></a>
                     <button type="button" class="bt3" style="width: 130px">ยกเลิกคำสั่งซื้อ</button>
                     <?php }?>
                 </div>
@@ -103,15 +103,16 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                         <td><?php echo $order["oAmount"]; ?></td>
                         <td><?php echo $valPro["pPrice"]*$order["oAmount"]; ?>B.</td>
                     </tr>
+                    <?php } ?>
                     <tr>
                         <td colspan="2" style="text-align: right">ค่าจัดส่ง</td>
                         <td>20B.</td>
                     </tr>
                         <tr>
-                            <td colspan="2"style="text-align: right;border: none">ราคารวม</td>
+                            <td colspan="2"style="text-align: right;border: none">ราคารวมสุทธิ</td>
                             <td style="border: none"><?php echo $val["bTotal"]; ?></td>
                         </tr>
-                    <?php } ?>
+
                     </tbody>
                 </table>
             </div>

@@ -52,7 +52,7 @@ include 'header.php'
                         if($bills->num_rows > 0) {
                             $n = 0;
                             while ($bill = mysqli_fetch_array($bills)) {
-                                if ($bill["bDeliveryStatus"] != "ส่งสินค้าสำเร็จ" && $bill["bDeliveryStatus"] != "รอการชำระ") {
+                                if ($bill["bDeliveryStatus"] != "ส่งสำเร็จแล้ว" && $bill["bDeliveryStatus"] != "รอการชำระ") {
 
                                     ?>
                                     <tr>
@@ -80,7 +80,7 @@ include 'header.php'
                 $bills = mysqli_query($con->connect(),$que);
                 if($bills->num_rows > 0) {
                     while ($bill = mysqli_fetch_array($bills)) {
-                        if ($bill["bDeliveryStatus"] != "ส่งสินค้าสำเร็จ--") {
+                        if ($bill["bDeliveryStatus"] != "ส่งสำเร็จแล้ว") {
                             $sql2 = "SELECT * FROM `orderinbill` where bid = ".$bill["bId"];
                             $orders = mysqli_query($con->connect(),$sql2);
 
@@ -136,7 +136,7 @@ include 'header.php'
                                             ?>
                                             <tr>
                                                 <td colspan="2">
-                                                    <img src="img/<?php echo $img["payImg"]; ?>">
+                                                    <img style="width: " src="img/<?php echo $img["payImg"]; ?>">
                                                 </td>
                                             </tr>
                                             <?php
@@ -167,13 +167,15 @@ include 'header.php'
         function showDetail(bId, status) {
 
             console.log(document.getElementById("detail"));
-            if (status == "ตรวจสอบการชำระเงิน") {
-
-            } else {
-                $select = "#detail"+bId;
-                $($select).show();
-
-            }
+            $select = "#detail"+bId;
+            $($select).show();
+            // if (status == "ตรวจสอบการชำระเงิน") {
+            //
+            // } else {
+            //     $select = "#detail"+bId;
+            //     $($select).show();
+            //
+            // }
         }
 
 
