@@ -16,6 +16,14 @@
         $con = new ConnectDBPro();
         $result = $con->getAllProduct();
     ?>
+    <form class="form-inline justify-content-center" action="checkAction.php?c=8" onsubmit="return checkSearch()" method="POST">
+        <div class="btn-group mt-2">
+            <div class="ml-2">
+                <input class="form-control" id="Search" placeholder="คำที่ใช้ค้นหา" name="Search" style="color: #4C8577;border-color: #4C8577">
+                <button type="submit" class="bt2">ค้นหา</button>
+            </div>
+        </div>
+    </form>
     <div class="container pt-5">
         <div class="row">
             <div class="col-7 border border-success rounded p-3">

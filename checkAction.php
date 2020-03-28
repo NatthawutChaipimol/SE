@@ -39,3 +39,7 @@ elseif($c==7){
     $_SESSION["listProduct"][$pid] += 1;
     header("Location:index.php");
 }
+elseif ($c==8){
+    $s = $_POST["Search"];
+
+}
