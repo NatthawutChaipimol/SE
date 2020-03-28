@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-<body background="/media/course-asset/html_content/bg_good.jpg">
-    
-    
-</body>
-</html>
+
 <html>
     <head>
         <?php
@@ -26,7 +15,7 @@ and open the template in the editor.
             <table style="width: 100%;">
                 <tr>
                     <td style="text-align: center;">
-                        <img src="./img/logo.png" width="200" height="200">
+                        
                     </td>
                 </tr>
             </table>
