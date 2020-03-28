@@ -111,7 +111,7 @@ while($show = mysqli_fetch_array($result)){
                         <tr>
                             <td colspan="3" style="text-align: center; padding-top: 10px;">
                                 <button type="submit" class="btn btn-outline-warning">Delete</button>
-                                <button class="btn btn-outline-warning"  ><a href="register.php?n=0">Insert</a></button>
+
 
 
                         </tr>
