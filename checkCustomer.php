@@ -27,7 +27,7 @@ if($ss == 1){
     }
 }
 else if($ss == 2){
-
+    $id = $_SESSION['cId'];
     $user = $_POST['user'];
     $pass = $_POST['pass'];
     $name = $_POST['name'];

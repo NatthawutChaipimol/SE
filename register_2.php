@@ -12,7 +12,7 @@
 include 'header_1.php';
 require_once './customerDB.php';
 $conn = new ConnectDBCustomr();
-$customer = $conn->getCustomer($_SESSION["$cId"]);
+$customer = $conn->getCustomer($_SESSION['cId']);
 $row = $customer->fetch_assoc();
 ?>
 <div class="login-page"  >
