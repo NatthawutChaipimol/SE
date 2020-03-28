@@ -29,7 +29,7 @@ if($_SESSION["cid"] != "") {
     $customer = $conn->getCustomer($_SESSION["cid"]);
     $val= $customer->fetch_assoc();
     if($val["cName"] != "admin"){
-        $link2 = "";//โปรไฟล์
+        $link2 = "register_2.php";//โปรไฟล์
     }
     $uname = $val["cName"];
     $bt = "ออกจากระบบ";
