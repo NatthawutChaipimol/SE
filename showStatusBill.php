@@ -42,7 +42,7 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <img src="img/เลขที่บัญชี1.png" style="width: 25rem" class="mt-3">
                 </div>
             </div>
-            <?php } elseif ($val["bDeliveryStatus"] == "ส่งสินค้าสำเร็จ" && $val["bReviewStatus"]==0) {?>
+            <?php } elseif ($val["bDeliveryStatus"] == "ส่งสำเร็จ" && $val["bReviewStatus"]==0) {?>
             <div class="card mt-2 border-success rounded" style="width: 100%; padding: 25px">
                 <div class="card-body" >
                     <form action="/SE/chackReview.php" method="post" onsubmit="return chackInput()">

@@ -52,7 +52,7 @@ include 'header.php'
                         if($bills->num_rows > 0) {
                             $n = 0;
                             while ($bill = mysqli_fetch_array($bills)) {
-                                if ($bill["bDeliveryStatus"] != "ส่งสำเร็จแล้ว" && $bill["bDeliveryStatus"] != "รอการชำระ") {
+                                if ($bill["bDeliveryStatus"] != "ส่งสำเร็จแล้ว" && $bill["bDeliveryStatus"] != "รอการชำระ" && $bill["bStatus"]) {
 
                                     ?>
                                     <tr>
@@ -136,7 +136,7 @@ include 'header.php'
                                             ?>
                                             <tr>
                                                 <td colspan="2">
-                                                    <img style="width: " src="img/<?php echo $img["payImg"]; ?>">
+                                                    <img style="width: 90%" src="img/<?php echo $img["payImg"]; ?>">
                                                 </td>
                                             </tr>
                                             <?php
