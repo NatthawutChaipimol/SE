@@ -49,7 +49,7 @@ if($_SESSION["cid"] != "") {
 <!--        <button class="bt1 my-2 my-sm-0 ml-3" type="submit">--><?php //echo $bt; ?><!--</button>-->
 <!--    </form>-->
     <div class="form-group" style="margin-bottom: 0px">
-        <a style="font-size: 20px;color: #D8F4C6" href="<?php echo $link2; ?>">
+        <a style="font-size: 20px;color: #D8F4C6" href="register_2.php?n=0">
             <?php echo $uname; ?>
         </a>
         <button class="bt1 my-2 my-sm-0 ml-3" type="submit" onclick="location.href='<?php echo $link; ?>'" ><?php echo $bt; ?></button>

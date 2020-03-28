@@ -62,7 +62,7 @@
             require_once './actionDBPro.php';
             $con = new ConnectDBPro();
             if($con->connect()){
-                $sql = "SELECT * FROM `product` WHERE pStatus=0";
+                $sql = "SELECT * FROM `product` WHERE pStatus=1";
                 $result = mysqli_query($con->connect(),$sql);
             }  else {
                 echo 'Failed';
