@@ -41,7 +41,7 @@ else if($chPay == 'ยืนยัน'){
     echo "ok Pay";
     if(move_uploaded_file($payImg["tmp_name"], "$dir".$payImg["name"])){
         $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
-    
+    }
 }
 else if($pId == 1 ){
     $sql = "UPDATE FROM `product` SET `pStatus` = 1  WHERE `pId`=".$id."";
