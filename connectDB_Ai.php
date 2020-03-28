@@ -1,6 +1,8 @@
 <?php
 class connectDB_Ai
+
 {
+
     public function connect()
     {
         $dbhost = "26.212.245.113";
@@ -45,8 +47,8 @@ class connectDB_Ai
     public function insertBill($bTotal,$cId,$array)
     {
         $sql =  "INSERT INTO `bill`( `bStatus`, `bTotal`, `bDeliveryStatus`, `cId` , `bReviewStatus`)
-        VALUES ('1','".$bTotal."','รอการชำระ','".$cId."','0')";
-
+        VALUES (true,'".$bTotal."','รอการชำระ','".$cId."',false)";
+        echo $sql;
         if (mysqli_query($this->connect(), $sql)) {
             $sql1 = "SELECT MAX(`bId`) as max FROM `bill`";
             $result = $this->connect()->query($sql1);
@@ -63,6 +65,8 @@ class connectDB_Ai
                     echo 'Insert Incomplete by key : '.$key;
                 }
             }
+            session_start();
+            $_SESSION["listProduct"] = array();
             return $value1["max"];
         } else echo "Cannot Insert";
     }
