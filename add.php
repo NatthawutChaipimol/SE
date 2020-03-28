@@ -69,7 +69,7 @@ while($show = mysqli_fetch_array($result)){
                                 Username :
                             </th>
                             <td style="padding-left: 20px; width: 60%">
-                                <input hidden name="seller_username" value="<?=$show['cUsername']?>">
+                                <input hidden name="user" value="<?=$show['cUsername']?>">
                                 <a><?=$show['cUsername']?></a>
                             </td>
                         </tr>
