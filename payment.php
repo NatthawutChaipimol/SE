@@ -156,7 +156,7 @@
         <tr>
             <td colspan="2" style="text-align: center; padding-bottom: 20px;">
                 <input type="submit"  class="button bt2" value="ยืนยัน">
-                <input type="button"  class="button bt3" value="ยกเลิก" onclick="location.href='index.php'" required></input>
+                <input type="button"  class="button bt3" value="ยกเลิก" onclick="location.href='showStatusBill.php?bid=<?php echo $bId ?>'" required></input>
             </td>
         </tr>
 </form></table>
