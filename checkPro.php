@@ -2,6 +2,7 @@
 require_once 'actionDBPro.php';
 error_reporting(E_ALL^E_NOTICE);
 
+
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $submit = $_POST['submit'];
@@ -37,6 +38,7 @@ else if($chPay == 'ยืนยัน'){
     $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
 }
 else if($pId == "1" ){
+    $sql = "UPDATE FROM `product` SET `pStatus` = 1  WHERE `pId`=".$id."";
     for($i=0;$i<count($_POST["checkbox"]);$i++)
 	{
 		if($_POST["checkbox"][$i] != "")
