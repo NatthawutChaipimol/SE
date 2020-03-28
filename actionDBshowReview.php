@@ -14,4 +14,12 @@ class ActionReview{
         return $conn;
     }
 
+    public function updateStatus($bid, $status){
+        $sql = "Update bill set bDeliveryStatus = '".$status."' where bId = ".$bid;
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:changeStatus.php");
+        } else {
+            echo 'Insert Incomplete';
+        }
+    }
 }
