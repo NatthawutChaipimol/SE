@@ -48,6 +48,16 @@ class ConnectDBPro
         } else echo "Cannot Update";
         echo "$pId,'".$pName."','.$pPrice.','.$pAmount.','.$pStatus.' ,'".$pImg."'";
     }
+    public function updateNo($pId, $pName , $pPrice, $pAmount, $pType, $pStatus)
+    {
+        $sql =  "UPDATE `product` SET `pName`='".$pName."',`pPrice`='.$pPrice.',`pAmount`='.$pAmount.'
+        ,`pType`='".$pType."',`pStatus`='.$pStatus.' WHERE  `pId`=$pId";
+        if (mysqli_query($this->connect(), $sql)) {
+            header("Location:listProduct.php");
+            echo "Can Update !!!";
+        } else echo "Cannot Update";
+        echo "$pId,'".$pName."','.$pPrice.','.$pAmount.','.$pStatus.'";
+    }
 
     public function delete($del)
     {
