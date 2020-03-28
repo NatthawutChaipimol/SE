@@ -24,6 +24,8 @@ if($c==1){
     $total = $_REQUEST["total"];
     $bid = $conn->insertBill($total,$_SESSION["cid"],$_SESSION["listProduct"]);
     header("Location:showStatusBill.php?bid=".$bid);
-}elseif (c==5){
+}elseif ($c==5){
+    $bid = $_REQUEST["bid"];
+    $conn->updateStatusBill($bid,"ตรวจสอบการชำระเงิน");
 
 }
