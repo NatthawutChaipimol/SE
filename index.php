@@ -12,16 +12,15 @@
     <?php
         include 'header.php';
         require_once 'DBindex.php';
-        require_once './ConnectDB_Ai.php';
+//        require_once './ConnectDB_Ai.php';
 //        echo $_SESSION["page"];
+        $con = new ConnectDBPro();
         if($_SESSION["page"] == "null"){
-            $con = new ConnectDBPro();
+
             $result = $con->getAllProduct();
         }else{
             $s=$_REQUEST["search"];
-            $con = new connectDB_Ai();
             $result = $con->searchProduct($s);
-            $_SESSION["page"] = "null";
         }
 //    echo $_SESSION["page"];
     ?>
@@ -77,11 +76,9 @@
                 <div class="row">
                     <?php
                     if($_SESSION["page"] == "null"){
-                        $con = new ConnectDBPro();
                         $result = $con->getAllProduct();
                     }else{
-                        $s=$_REQUEST["search"];
-                        $con = new connectDB_Ai();
+
                         $result = $con->searchProduct($s);
                         $_SESSION["page"] = "null";
                     }

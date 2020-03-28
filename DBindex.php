@@ -24,6 +24,10 @@ class ConnectDBPro
             return null;
         }
     }
+    public function searchProduct($s){
+        $sql = "SELECT * FROM `product` WHERE `pName` LIKE '%".$s."%'";
+        return $this->connect()->query($sql);
+    }
     public function getScoreOFProduct($pid){
         $sum = 0;
         $result = mysqli_query($this->connect(),
