@@ -62,7 +62,7 @@
             require_once './actionDBPro.php';
             $con = new ConnectDBPro();
             if($con->connect()){
-                $sql = "SELECT * FROM `product`";
+                $sql = "SELECT * FROM `product` WHERE pStatus=0";
                 $result = mysqli_query($con->connect(),$sql);
             }  else {
                 echo 'Failed';
@@ -73,7 +73,6 @@
                 <tr>
                     <th>Delete</th>
                     <th>Update</th>
-                    <th>pId</th>
                     <th>pName</th>
                     <th>pPrice</th>
                     <th>pAmount</th>
@@ -89,7 +88,6 @@
                 <tr>
                     <td> <input type="checkbox" name="checkbox[]" value="<?php echo $row["pId"]; ?>"> </td>
                     <td> <a href="editPro.php?s=1&pId=<?php echo $row["pId"] ?>">Update</a> </td>
-                    <td> <?php echo $row["pId"] ?> </td>
                     <td> <?php echo $row["pName"] ?> </td>
                     <td> <?php echo $row["pPrice"] ?> </td>
                     <td> <?php echo $row["pAmount"] ?> </td>
