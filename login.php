@@ -25,7 +25,7 @@ and open the template in the editor.
                 </tr>
             </table>
         </div>
-        <form class="login-form" action='check.php?s=1' method='POST'>
+        <form class="login-form" action='' method=''>
             <input type="text" placeholder="username" name='username'/>
             <input type='password' placeholder='password' name='password'/>
             <button>login</button>
