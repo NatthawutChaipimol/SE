@@ -29,7 +29,7 @@ $con=new ConnectDBPro();
 if($submit == 'บันทึก'){
     echo "ok";
     if(move_uploaded_file($pImg["tmp_name"], "$dir".$pImg["name"])){
-        $con->insert($pName , $pPrice, $pAmount, $pType, 0, $pImg["name"]);
+        $con->insert($pName , $pPrice, $pAmount, $pType, 1, $pImg["name"]);
     }
 }
 else if($submit == 'ยืนยันการแก้ไข'){
