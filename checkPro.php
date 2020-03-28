@@ -1,6 +1,8 @@
 <?php
 require_once 'actionDBPro.php';
 error_reporting(E_ALL^E_NOTICE);
+
+
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $submit = $_POST['submit'];
@@ -20,7 +22,6 @@ $payDate = $_POST["payDate"];
 $payFormat = $_POST["payFormat"];
 $payTotal = $_POST["payTotal"];
 $bId = $_REQUEST["bId"];
-$dir = "img/";
 
 
 $con=new ConnectDBPro();
@@ -33,19 +34,24 @@ if($submit == 'บันทึก'){
 else if($submit == 'ยืนยันการแก้ไข'){
     echo "ok";
     if(move_uploaded_file($pImg["tmp_name"], "$dir".$pImg["name"])){
-        $con->update($pId,$pName , $pPrice, $pAmount,$pType, $pStatus, $pImg["name"]);
+        $con->update($pId,$pName , $pPrice, $pAmount,$pType, $pStatus, $pImg);
     }
 }
 else if($chPay == 'ยืนยัน'){
     echo "ok Pay";
     if(move_uploaded_file($payImg["tmp_name"], "$dir".$payImg["name"])){
-        $con->insertPay($payStatus , $payImg["name"] , $payDate , $payFormat , $payTotal , $bId);
+        $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
     }
 }
-else if($pid == 1 ){
-    $dels = $_POST['checkbox'];
-    $del = new ConnectDBPro();
-    $del->delete($dels);
+else if($pId == 1 ){
+    for($i=0;$i<count($_POST["checkbox"]);$i++)
+	{
+		if($_POST["checkbox"][$i] != "")
+		{
+            echo "Ok ".$_POST["checkbox"][$i]." ";
+            $con->delete($_POST["checkbox"][$i]);
+		}
+	}
 }else{
     echo "Not all";
 }

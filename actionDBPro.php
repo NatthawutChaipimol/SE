@@ -51,29 +51,10 @@ class ConnectDBPro
 
     public function delete($del)
     {
-        if($del != null){
-<<<<<<< HEAD
-            for($id=0;$id<sizeof($del) ;$id++){
-            $sql = "UPDATE FROM `product` SET `pStatus` = 1  WHERE pId = ".$del[$id]."";
-            $result = mysqli_query($this->connect(), $sql);
-            }
-            if($result){
-                header("Location:listProduct.php");
-            }  else {
-                echo "Delete Failed";
-            }
-        }else{
+        $sql = "UPDATE FROM `product` SET `pStatus` = 1 WHERE `pId` =$del";
+        if (mysqli_query($this->connect(), $sql)) {
             header("Location:listProduct.php");
-=======
-            $sql = "UPDATE FROM `product` SET `pStatus`= 1  WHERE  `pId`='".$del."'";
-            $result = mysqli_query($this->connect(), $sql);
-            if($result){
-                header("Location:admin.php");
-            }  else {
-                echo "Cannot update";
-            }
->>>>>>> 48bea26098e46a762fd2d827716b770f97cbf0d4
-        }
+        } else echo "Cannot update";
     }
     
 }
