@@ -130,15 +130,7 @@
                         <input type="radio" name="pType" value="เครื่องดื่ม" required><label>เครื่องดื่ม</label> <br>
                         <input type="radio" name="pType" value="ขนม" checked="checked" required><label>ขนม</label> <br>
                     <?php } ?>
-
-                    <label class="LabelText" >สถานะของสินค้า</label>
-                    <?php if($row["pStatus"] == 0){ ?>
-                        <input type="radio" name="pStatus" value="0" checked="checked" required><label>ขาย</label><br>
-                        <input type="radio" name="pStatus" value="1" required><label>ไม่ขาย</label> <br>
-                    <?php }else{ ?>
-                        <input type="radio" name="pStatus" value="0" required><label>ขาย</label><br>
-                        <input type="radio" name="pStatus" value="1" checked="checked" required><label>ไม่ขาย</label> <br>
-                    <?php } ?>
+                    
                     <label class="LabelText" >เลือกรูปของสินค้า</label>
                     <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                         <input id="upload" type="file" name="pImg" value="<?php echo $row["pImg"] ?>" onchange="readURL(this);" class="form-control border-0" required>
