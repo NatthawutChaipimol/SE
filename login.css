@@ -99,7 +99,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #4C8577; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -137,12 +137,12 @@ body {
 
 .button3 {
     background-color: white;
-    color: red;
-    border: 2px solid #f44336;
+    color: green;
+    border: 2px solid #4C8577;
 }
 
 .button3:hover {
-    background-color: #f44336;
+    background-color: #4C8577;
     color: white;
 }
 
@@ -163,10 +163,4 @@ body {
 .button5:hover {
     background-color: #555555;
     color: white;
-}
-.backgroundimg{
-    background-image: url('/img/coffee.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 888;
 }
