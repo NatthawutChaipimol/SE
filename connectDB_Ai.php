@@ -16,6 +16,10 @@ class connectDB_Ai
         }
         return $conn;
     }
+    public function searchProduct($s){
+        $sql = "SELECT * FROM `product` WHERE `pName` LIKE '%".$s."%'";
+        return $this->connect()->query($sql);
+    }
     public function updateStatusBill($bid, $status){
         $sql = "Update bill set bDeliveryStatus = '".$status."' where bId = ".$bid;
         if(mysqli_query($this->connect(), $sql)){
@@ -69,5 +73,18 @@ class connectDB_Ai
             $_SESSION["listProduct"] = array();
             return $value1["max"];
         } else echo "Cannot Insert";
+    }
+    public function getScoreOFProduct($pid){
+        $sum = 0;
+        $result = mysqli_query($this->connect(),
+            "SELECT * FROM `review` where `pId` = $pid  ");
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $sum = $sum+$row['rScore'];
+            }
+            return $sum/$result->num_rows;
+        }else{
+            return 0 ;
+        }
     }
 }

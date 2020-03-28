@@ -43,4 +43,8 @@ class ConnectDBPro
        mysqli_query($this->connect(),
            "UPDATE `bill` SET  `bReviewStatus` = 1 where `bId` = $bId");
    }
+   public function cancelOder($bid){
+       mysqli_query($this->connect(),
+           "UPDATE `bill` SET  `bStatus` = 0 where `bId` = $bid");
+   }
 }

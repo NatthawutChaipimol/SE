@@ -31,7 +31,7 @@ else if($val["bDeliveryStatus"] == "ส่งสำเร็จแล้ว") $t
                     <h4><?php echo $text; ?></h4>
                     <?php if($val["bDeliveryStatus"] == "รอการชำระ") {?>
                     <a href="payment.php?bid=<?php echo $val["bId"]?>"><button type="button" class="bt2" style="width: 130px">แจ้งโอน</button></a>
-                    <button type="button" class="bt3" style="width: 130px">ยกเลิกคำสั่งซื้อ</button>
+                    <button type="button" onclick="location.href='cancelOder.php?bid=<?php echo $bid?>' " class="bt3" style="width: 130px">ยกเลิกคำสั่งซื้อ</button>
                     <?php }?>
                 </div>
             </div>
