@@ -55,14 +55,6 @@ include 'header_1.php';
             window.alert('กรุณากรอกข้อมูล Username')
             return false
         }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
         else if(pass.value == "" && pass.value.match(passw)){
             window.alert('กรุณากรอกข้อมูล Password')
             return false

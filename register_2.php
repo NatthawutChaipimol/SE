@@ -12,7 +12,7 @@
 include 'header_1.php';
 require_once './customerDB.php';
 $conn = new ConnectDBCustomr();
-$customer = $conn->getCustomer("1");
+$customer = $conn->getCustomer($_SESSION['cid']);
 $row = $customer->fetch_assoc();
 ?>
 <div class="login-page"  >
@@ -56,14 +56,6 @@ $row = $customer->fetch_assoc();
 
         if(user.value == "" && user.value.match(userf)){
             window.alert('กรุณากรอกข้อมูล Username')
-            return false
-        }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
-            return false
-        }
-        else if(user.value == "admin"){
-            window.alert('Username ไมสามารถใช่ได้')
             return false
         }
         else if(pass.value == "" && pass.value.match(passw)){

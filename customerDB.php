@@ -26,8 +26,8 @@ class ConnectDBCustomr
             echo 'Insert Incomplete';
         }
     }
-    public function getCustomer($cId){
-        $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cId."'";
+    public function getCustomer($cid){
+        $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cid."'";
         return $this->connect()->query($sql);
     }
     public function UpdateCustomer($id,$user, $pass, $name, $tel, $address, $status)
