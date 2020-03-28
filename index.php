@@ -13,6 +13,7 @@
         include 'header.php';
         require_once 'DBindex.php';
         require_once './ConnectDB_Ai.php';
+//        echo $_SESSION["page"];
         if($_SESSION["page"] == "null"){
             $con = new ConnectDBPro();
             $result = $con->getAllProduct();
@@ -22,7 +23,7 @@
             $result = $con->searchProduct($s);
             $_SESSION["page"] = "null";
         }
-
+//    echo $_SESSION["page"];
     ?>
     <form class="form-inline justify-content-center" action="checkAction.php?c=8" onsubmit="return checkSearch()" method="POST">
         <div class="btn-group mt-2">
@@ -116,6 +117,7 @@
                         <?php } } ?>
                 </div>
             </div>
+            <?php if($_SESSION["cid"] != 1 && $_SESSION["cid"] != ""){ ?>
             <div class="col-1"></div>
             <div class="col-4">
                 <div class="border border-success rounded p-3">
@@ -171,6 +173,7 @@
                 </table>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
