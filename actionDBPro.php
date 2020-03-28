@@ -61,7 +61,7 @@ class ConnectDBPro
 
     public function delete($del)
     {
-        $sql = "UPDATE `product` SET `pStatus` = 1 WHERE `pId` =$del";
+        $sql = "UPDATE `product` SET `pStatus` = 0 WHERE `pId` =$del";
         if (mysqli_query($this->connect(), $sql)) {
             header("Location:listProduct.php");
         } else echo "Cannot update";
