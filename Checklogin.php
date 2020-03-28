@@ -6,7 +6,6 @@ $s = $_REQUEST["s"];
 if($s==1){
     $conn = new ConnectDB();
     if($_POST['cUsername'] == 'admin' && $_POST['cPassword'] == '1234'){
-        
         $_SESSION['cUsername'] = $_POST['cUsername'];
         $customer = $conn->getCustomer($_SESSION["cid"]);
         $_SESSION['status'] = '1';
