@@ -2,7 +2,6 @@
 require_once 'actionDBPro.php';
 error_reporting(E_ALL^E_NOTICE);
 
-
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $submit = $_POST['submit'];
@@ -27,7 +26,7 @@ $bId = $_REQUEST["bId"];
 $con=new ConnectDBPro();
 if($submit == 'บันทึก'){
     echo "ok";
-    $con->insert($pName , $pPrice, $pAmount,$pType, $pStatus, $pImg);
+    $con->insert($pName , $pPrice, $pAmount,$pType, 0, $pImg);
 }
 else if($submit == 'ยืนยันการแก้ไข'){
     echo "ok";
@@ -38,9 +37,6 @@ else if($chPay == 'ยืนยัน'){
     $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
 }
 else if($pId == "1" ){
-
-    $sql = "DELETE FROM `product` WHERE `pId`=".$id."";
-    
     for($i=0;$i<count($_POST["checkbox"]);$i++)
 	{
 		if($_POST["checkbox"][$i] != "")

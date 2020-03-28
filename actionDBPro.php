@@ -51,10 +51,15 @@ class ConnectDBPro
 
     public function delete($del)
     {
-        $sql = "DELETE FROM `product` WHERE pId=".$del."";
-        if (mysqli_query($this->connect(), $sql)) {
-            header("Location:listProduct.php");
-        } else echo "Cannot update";
+        if($del != null){
+            $sql = "UPDATE FROM `product` SET `pStatus`= 1  WHERE  `pId`='".$del."'";
+            $result = mysqli_query($this->connect(), $sql);
+            if($result){
+                header("Location:admin.php");
+            }  else {
+                echo "Cannot update";
+            }
+        }
     }
     
 }
