@@ -40,7 +40,9 @@
                 <hr>
                 <div class="row">
                     <?php
-                    while($row = $result->fetch_assoc()) {?>
+                    while($row = $result->fetch_assoc()) {
+                        if($row['pType']=="เครื่องดืม"){?>
+
                     <div class="col-4">
                         <div class="card" >
                             <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." onclick="location.href = 'showReview.php?pId=<?php echo $row['pId']?>'" >
@@ -67,7 +69,51 @@
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php } } ?>
+                </div>
+                <h5 class="mt-4">หมวดขนม</h5>
+                <hr>
+                <div class="row">
+                    <?php
+                    if($_SESSION["page"] == "null"){
+                        $con = new ConnectDBPro();
+                        $result = $con->getAllProduct();
+                    }else{
+                        $s=$_REQUEST["search"];
+                        $con = new connectDB_Ai();
+                        $result = $con->searchProduct($s);
+                        $_SESSION["page"] = "null";
+                    }
+                    while($row = $result->fetch_assoc()) {
+                        if($row['pType']=="ขนม"){?>
+
+                            <div class="col-4">
+                                <div class="card" >
+                                    <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." onclick="location.href = 'showReview.php?pId=<?php echo $row['pId']?>'" >
+                                    <div class="card-body">
+                                        <?php
+                                        $star=$con->getScoreOFProduct($row['pId']);
+                                        for ($i = 1; $i <= 5; $i++) {
+                                            if ($star >= 1) {
+                                                echo '<i class="fas fa-star" style="font-size: 20px;color: gold"></i>';
+                                            } else if($star >= 0.5){
+                                                echo '<i class="fas fa-star-half-alt" style="font-size: 20px;color: gold"></i>';
+                                            }else {
+                                                echo '<i class="far fa-star" style="font-size: 20px;color: gold"></i>';
+                                            }
+                                            $star--;
+                                        }
+                                        ?>
+                                        <h5 class="card-title"><?php echo $row['pName'] ?> </h5>
+                                        <a><?php echo $row['pPrice'] ?></a>
+
+                                        <a class="float-right" href="checkAction.php?c=1&pid=<?php echo $row['pId'] ;?>">
+                                            <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" ></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } } ?>
                 </div>
             </div>
             <div class="col-1"></div>
