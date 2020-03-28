@@ -14,12 +14,8 @@ class connectDB_Ai
         }
         return $conn;
     }
-    public function getAllProduct(){
-        $sql = "SELECT * FROM product";
-        return $this->connect()->query($sql);
-    }
-    public function getReviews($seller_id){
-        $sql = "SELECT `reviews_star` FROM `reviews` WHERE `seller_id` = '".$seller_id."'";
+    public function getCustomer($cId){
+        $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cId."'";
         return $this->connect()->query($sql);
     }
     public function getBill($bId){
@@ -40,9 +36,8 @@ class connectDB_Ai
     }
     public function insertBill($bTotal,$cId,$array)
     {
-        $sql =  "INSERT INTO `bill`( `bStatus`, `bTotal`, `bDeliveryStatus`, `cId`) 
-        VALUES ([value-1],[value-2],[value-3],[value-4],[value-5]) 
-        VALUES ('1','".$bTotal."','รอการชำระ','".$cId."')";
+        $sql =  "INSERT INTO `bill`( `bStatus`, `bTotal`, `bDeliveryStatus`, `cId` , `bReviewStatus`)
+        VALUES ('1','".$bTotal."','รอการชำระ','".$cId."','0')";
 
         if (mysqli_query($this->connect(), $sql)) {
             $sql1 = "SELECT MAX(`bId`) as max FROM `bill`";

@@ -12,6 +12,7 @@
     <?php
         include 'header.php';
         require_once 'DBindex.php';
+        require_once './ConnectDB_Ai.php';
         $con = new ConnectDBPro();
         $result = $con->getAllProduct();
     ?>
@@ -28,7 +29,6 @@
                             <img src="img/<?php echo $row['pImg']?>" class="card-img-top" alt="..." >
                             <div class="card-body">
                                 <?php
-
                                 $star=$con->getScoreOFProduct($row['pId']);
                                 for ($i = 1; $i <= 5; $i++) {
                                     if ($star >= 1) {
@@ -43,9 +43,10 @@
                                 ?>
                                 <h5 class="card-title"><?php echo $row['pName'] ?> </h5>
                                 <a><?php echo $row['pPrice'] ?></a>
-                                <p class="float-right" type="submit" href="">
-                                    <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" aria-hidden="true"></i>
-                                </p>
+
+                                <a class="float-right" href="checkAction.php?c=1&pid=<?php echo $row['pId'] ;?>">
+                                    <i class="fas fa-cart-plus float-right" style="font-size: 30px;color: #4E6E58" ></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -63,19 +64,43 @@
                             <td>จำนวน</td>
                             <td>ราคา</td>
                         </tr>
+                        <?php
+                        $sumall = 0;
+                        $i=0;
+                        foreach ($_SESSION["listProduct"] as $key => $value){
+                        $conn = new connectDB_Ai();
+                        $product = $conn->getProduct($key);
+                        $row = $product->fetch_assoc();
+                        $sumall += $row["pPrice"]*$value;
+                        ?>
                         <tr>
-                            <td>Cafe mocha</td>
-                            <td>1</td>
-                            <td>100B.</td>
+                            <td><?php echo $row["pName"]; ?></td>
+                            <td><?php echo $value; ?></td>
+                            <td><?php echo $row["pPrice"]*$value; ?>B.</td>
                         </tr>
+                        <?php } ?>
                         <tr>
                             <td colspan="2" style="text-align: center; border-top: 0px">ราคารวม</td>
-                            <td style="border-top: 0px">300B.</td>
+                            <td style="border-top: 0px"><?php echo $sumall ?>B.</td>
                         </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: center; border-top: 0px">ค่าจัดส่ง</td>
+                            <td style="border-top: 0px">20B.</td>
+                        </tr>
+                        <?php $sumall+=20; ?>
+                        <tr>
+                            <td colspan="2" style="text-align: center; border-top: 0px">ราคารวมสุทธิ</td>
+                            <td style="border-top: 0px"><?php echo $sumall ?>B.</td>
+                        </tr>
+
                         </tbody>
                     </table>
-                    <button type="button" class="btn btn-outline-danger">ล้างสินค้า</button>
-                    <button type="button" class="btn btn-outline-success" style="float: right">สั่งสินค้า</button>
+                    <form action="checkAction.php?c=3" method='POST'>
+                    <button type="submit" class="btn btn-outline-danger">ล้างสินค้า</button>
+                    </form>
+                    <form action="checkAction.php?c=4&total=<?php echo $sumall; ?>" method='POST'>
+                    <button type="submit" class="btn btn-outline-success" style="float: right">สั่งสินค้า</button>
+                    </form>
                 </div>
             </div>
         </div>

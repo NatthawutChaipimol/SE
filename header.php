@@ -7,18 +7,39 @@
     <meta charset="UTF-8">
 </head>
 <body>
+<?php
+session_start();
+require_once './ConnectDB_Ai.php';
+$conn = new connectDB_Ai();
+if(!isset($_SESSION["listProduct"])){
+    $_SESSION["listProduct"] = array();
+}
+$bt = "เข้าสู่ระบบ";
+$link = "login.php";
+$uname = "";
+if(!isset($_SESSION["cid"])){
+    $_SESSION["cid"] = "";
+}
+if($uname != "") {
+    $customer = $conn->getCustomer($_SESSION["cid"]);
+    $val= $customer->fetch_assoc();
+    $uname = $val["cName"];
+    $bt = "ออกจากระบบ";
+    $link = "checkAction.php?c=2";
+
+}
+?>
 <nav class="navbar navbar-light" style="background-color: #4C8577;">
     <a class="navbar-brand text-light" href="" style="color: #D8F4C6">
         <img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         L’ arbre Cafe
     </a>
-    <form class="form-inline" action="" method='POST'>
+    <form class="form-inline" action="<?php echo $link; ?>" method='POST'>
 
         <a style="font-size: 20px;color: #D8F4C6" href="">
-            Airada
+            <?php echo $uname; ?>
         </a>
-
-        <button class="bt1 my-2 my-sm-0 ml-3" type="submit">ออกจากระบบ</button>
+        <button class="bt1 my-2 my-sm-0 ml-3" type="submit"><?php echo $bt; ?></button>
     </form>
 </nav>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
