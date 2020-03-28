@@ -5,7 +5,8 @@ require_once './ConnectDBLogin.php';
 $s = $_REQUEST["s"];
 if($s==1){
     if($_POST['cUsername'] == 'admin' && $_POST['cPassword'] == '1234'){
-        //$_SESSION['cUsername'] = $_POST['cUsername'];
+        
+        $_SESSION['cUsername'] = $_POST['cUsername'];
         $_SESSION['status'] = '1';
     }else {
         $conn = new ConnectDB();
