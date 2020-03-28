@@ -41,12 +41,10 @@ else if($chPay == 'ยืนยัน'){
     echo "ok Pay";
     if(move_uploaded_file($payImg["tmp_name"], "$dir".$payImg["name"])){
         $con->insertPay($payStatus , $payImg , $payDate , $payFormat , $payTotal , $bId);
-    
+    }
 }
-else if($pId == "1" ){
-
-    $sql = "DELETE FROM `product` WHERE `pId`='".$id."'";
-    
+else if($pId == 1 ){
+    $sql = "UPDATE FROM `product` SET `pStatus` = 1  WHERE `pId`=".$id."";
     for($i=0;$i<count($_POST["checkbox"]);$i++)
 	{
 		if($_POST["checkbox"][$i] != "")
@@ -58,5 +56,3 @@ else if($pId == "1" ){
 }else{
     echo "Not all";
 }
-
-
