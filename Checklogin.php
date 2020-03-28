@@ -11,7 +11,7 @@ if($s==1){
     }else {
         $conn = new ConnectDB();
         $user = $conn->login($_POST['cUsername'], $_POST['cPassword']);
-        $_SESSION['cUsername'] = $_POST['cUsername'];
+        $_SESSION['cid'] = $_POST['cid'];
     }
     if($_SESSION['status'] == '1'){
         header("Location:index.php");
