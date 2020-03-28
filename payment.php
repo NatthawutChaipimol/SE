@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Page Title</title>
+    <title>ชำระเงิน</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -102,20 +102,20 @@
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;"">
                 <div class="form-group">
                     <select class="form-control" id="bank" name="Bank">
-                        <option>ธนาคารกรุงไทย</option>
-                        <option>ธนาคารกรุงเทพ</option>
-                        <option>ธนาคารไทยพาณิชย์</option>
-                        <option>ธนาคารอิสลาม</option>
+                        <option value="ธนาคารกรุงไทย">ธนาคารกรุงไทย</option>
+                        <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
+                        <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
+                        <option value="ธนาคารอิสลาม">ธนาคารอิสลาม</option>
                     </select>
                 </div>
             </th>
         </tr>
         <tr>
-            <th style="width: 40%; padding-top: 10px; padding-left: 20px;">
+            <th style="width: 40%; padding-top: 10px; padding-left: 20px;" hidden>
                 เวลาที่ทำการโอน :
             </th>
             <th style="color: #4C8577; padding-top: 10px; padding-right: 20px;">
-                <input id="Time" type="time" value="08:30" />
+                <input id="Time" type="time" value="" hidden />
             </th>
         </tr>
         <tr>

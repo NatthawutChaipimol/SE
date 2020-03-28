@@ -97,7 +97,7 @@
             } 
         ?>
             <form action="checkPro.php?id=1" method="POST">
-            <table>
+            <table style="width: 70%">
                 <tr>
                     <th>Delete</th>
                     <th>Update</th>
