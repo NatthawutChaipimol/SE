@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-include 'header_1.php';
+include 'header.php';
 require_once './customerDB.php';
 $conn = new ConnectDBCustomr();
 $customer = $conn->getCustomer($_SESSION['cid']);
