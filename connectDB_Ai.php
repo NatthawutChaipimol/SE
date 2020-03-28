@@ -14,7 +14,14 @@ class connectDB_Ai
         }
         return $conn;
     }
-
+    public function updateStatusBill($bid, $status){
+        $sql = "Update bill set bDeliveryStatus = '".$status."' where bId = ".$bid;
+        if(mysqli_query($this->connect(), $sql)){
+            header("Location:showStatusBill.php?bid=".$bid);
+        } else {
+            echo 'Insert Incomplete';
+        }
+    }
     public function getCustomer($cId){
         $sql = "SELECT * FROM `customer` WHERE `cId` = '".$cId."'";
         return $this->connect()->query($sql);

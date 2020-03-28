@@ -23,11 +23,14 @@ class ConnectDB
             return $result;
         }
         else{
+            
         header("Location:index.php");
+        }
+
     }
-    
-
-
+    public function getCustomer($cid){
+        $sql = "SELECT * FROM `customer` WHERE `cid` = '".$cid."'";
+        return $this->connect()->query($sql);
     }
     
     
