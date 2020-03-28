@@ -75,7 +75,7 @@
                         ?>
                         <tr>
                             <td><?php echo $row["pName"]; ?></td>
-                            <td> <a href="checkAction.php?c=5&pid=<?php echo $row['pId'] ;?>"><i class="fas fa-minus-circle" style="font-size: 20px;color: gold"></i> </a><?php echo $value; ?><a href="checkAction.php?c=6&pid=<?php echo $row['pId'] ;?>"> <i class="fas fa-plus-circle" style="font-size: 20px;color: gold"></i></a></td>
+                            <td> <a href="checkAction.php?c=6&pid=<?php echo $row['pId'] ;?>"><i class="fas fa-minus-circle" style="font-size: 20px;color: gold"></i> </a><?php echo $value; ?><a href="checkAction.php?c=7&pid=<?php echo $row['pId'] ;?>"> <i class="fas fa-plus-circle" style="font-size: 20px;color: gold"></i></a></td>
                             <td><?php echo $row["pPrice"]*$value; ?>B.</td>
                         </tr>
                         <?php } ?>
